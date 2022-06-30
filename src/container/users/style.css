@@ -1,0 +1,77 @@
+.content-wrapper{
+    width: 100%;
+    height: auto;
+  
+}
+.navbar-container{
+    width: 100% !important;
+    flex-direction: column;
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(203, 201, 201);
+    padding: 10px 80px 1px;
+}
+.navbar-content{
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-title{
+    font-weight:900;
+    letter-spacing: 2px;
+    font-size: 1.9rem;
+}
+.navbar-content-list{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.navbar-content-list > * {
+    margin: 0  15px 0;
+}
+.sign-up-sign-in-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.btn-register{
+   margin-right: 5px; 
+   cursor: pointer;
+}
+.btn-login{
+margin-left: 5px;
+cursor: pointer;
+}
+.menu-navbar{
+    display: none;
+}
+.mobile-navbar-container{
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .content-wrapper{
+        padding: 0  !important;
+    
+    }
+    .navbar-container{
+        padding: 5px 5px  5px !important;
+    }
+    .menu-navbar{
+        display: block;
+    }
+    .navbar-content{
+        justify-content: flex-start !important;
+        align-items:center;
+        flex-direction: column !important;
+    }
+    .navbar-content-list{
+        width: 100%;
+        align-items: center;
+        justify-content: flex-start;
+    }
+   
+}
