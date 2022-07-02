@@ -12,7 +12,7 @@ const Login = () => {
           <form class="login">
             <div className="login-title">
               <div className="pointer" onClick={e => {
-                history.push("/")
+                history.push("/ ")
               }}>
                 <BsArrowLeft size={25} />
               </div>{" "}

@@ -7,7 +7,7 @@ function App() {
   return (
    <BrowserRouter>
     <Switch>
-    <Route path={'/admin'} exact render={route => {
+    <Route path={'/admin'}  render={route => {
         return <AdminContainer {...route}/>
       }}/>
       <Route path={"/login"} exact render={route => {

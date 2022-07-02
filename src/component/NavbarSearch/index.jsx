@@ -8,28 +8,28 @@ function NavbarSearch() {
     e.preventDefault();
   }
   return (
-    <form action='Hello' method='Post' onSubmit={handleSubmit} >
-
-    <div className='search-form'>
-      <span className='icon-search2'><AiOutlineSearch size={16} /></span>
-      <input value={val} type={"search"} placeholder='Search...' className='input-search' onChange={e => {
-        setSeaching(true)
-        setVal(e.target.value)
-      }} onBlur={e => {
+  
+      <button className={`btn-search p-2 `} onBlur={e => {
         setSeaching(false)
-      }}
-      onFocus={e => {
-        setSeaching(true)
-      }}
-      />
-    </div>
-    {searching && val.length > 0?
-      <div className='search-result'>
-          loading
+      }}>
+      <div className='search-form'>
+        <span className='icon-search2'><AiOutlineSearch size={16} /></span>
+        <input value={val} type={"search"} placeholder='Search...' className='input-search' onChange={e => {
+          setSeaching(true)
+          setVal(e.target.value)
+        }} 
+        onFocus={e => {
+          setSeaching(true)
+        }}
+        />
       </div>
-    : null}
-    
-    </form>
+      {searching && val.length > 0?
+        <div className='search-result shadow'>
+            loading
+        </div>
+      : null}
+    </button>
+  
   )
 }
 
