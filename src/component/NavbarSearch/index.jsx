@@ -4,9 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 function NavbarSearch() {
   const [searching, setSeaching] = useState(false);
   const [val, setVal] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
+
   return (
   
       <button className={`btn-search p-2 `} onBlur={e => {

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300&display=swap');
 
+
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +12,20 @@ body {
 }
 .pointer{
   cursor: pointer;
+}
+.table-title{
+  font-size: 1.5rem;
+}
+
+.bg-blue-50{
+  background-color: rgb(147, 212, 247);
+}
+.cursor-not-allowed{
+  cursor: not-allowed;
+}
+.bg-gray-50{
+  background-color: rgb(199, 199, 199);
+}
+.rounded{
+  border-radius: 8px;
 }

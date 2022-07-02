@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    category: [],
+    categories: [],
     loading: false,
 }
 const slice =  createSlice({

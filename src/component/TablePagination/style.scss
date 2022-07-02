@@ -1,0 +1,24 @@
+.paginate-page{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style:none;
+    list-style-type: none;
+    & > * {
+        margin: 10px;
+    }
+    li a {
+        text-decoration: none;
+    }
+}
+.active-page{
+    a{
+        color: #fff !important;
+        font-weight: 900 !important;
+    }
+   
+}
+.not-active{
+    color: rgb(22, 21, 21);
+    font-weight:900;
+}
