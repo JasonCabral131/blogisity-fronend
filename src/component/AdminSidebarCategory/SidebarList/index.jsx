@@ -20,7 +20,7 @@ const SidebarList = ({data}) => {
   return (
     <>
     <div className='d-flex justify-content-between align-items-center w-100 p-1 pointer sidebar-link-container' >
-        <div className='d-flex justify-content-start align-items-center w-100' onClick={handleLink}>
+        <div className='d-flex justify-content-start align-items-center w-100 p-2' onClick={handleLink}>
             <IconContext.Provider value={{size: 18}}>
                 {data.icon}
             </IconContext.Provider>

@@ -16,7 +16,7 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
-.table-search-container svg{
+.table-search-container .tbl-search-icons{
     color: #a0a5b1;
     position: absolute;
     font-size: 19px;
@@ -48,4 +48,19 @@
 .table-search-container input:focus {
     outline: none !important;
     border: 2px solid rgb(90, 189, 251) !important;
+}
+.tbl-btn-search{
+    outline: none !important;
+    border: none !important;
+    border-radius: 10px;
+    background-color: #eff4fc;
+    padding: 0 10px;
+    span{
+        color:var(--lighterblue);
+        font-size: .9rem;
+        letter-spacing: .5px;
+    }
+    &:hover{
+        background-color: #DBEAFE;
+    }
 }
