@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import AdminContainer from "./container/admin";
 import UserContainer from "./container/users";
 import Login from "./pages/Login";
+import { ToastContainer } from 'react-toastify';
 function App() {
   return (
    <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
       }}/>
    
     </Switch>
+    <ToastContainer />
    </BrowserRouter>
   );
 }

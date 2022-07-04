@@ -1,17 +1,18 @@
 import React from 'react'
-import AdminSidebar from '../../component/AdminSidebarCategory'
+import SidebarList from "./../../component/AdminSidebarCategory"
 import {AdminNavs} from "./../../config/adminNav";
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div className='sidebar-container shadow'>
         <div className='sidebar-title d-flex justify-content-center align-items-center p-1'>
             Blogisity
         </div>
-        <hr />
-        <div className='w-100 p-2'>
-
+        <div className="link-container">
+          {AdminNavs.map((nav, key) => {
+            return <SidebarList key={key} {...nav} {...props}/>;
+          })}
         </div>
-        <AdminSidebar nav={AdminNavs}/>
+      
     </div>
   )
 }

@@ -3,7 +3,7 @@ import "./style.scss";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
-const TablePagination = ({ page, setPage, totalPages = 0}) => {
+const TablePagination = ({ page, setPage, totalPages}) => {
 
 
     const onNextPage = () => {
@@ -52,12 +52,12 @@ const TablePagination = ({ page, setPage, totalPages = 0}) => {
       <ReactPaginate
         activeClassName="bg-gray-50 rounded py-1 text-white px-3 align-items-center justify-content-center text-center d-flex pointer active-page"
         breakLabel="..."
-        forcePage={1}
+        forcePage={page}
         previousLabel={<PrevPage />}
         nextLabel={<NextPage />}
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
-        pageCount={totalPages + 1}
+        pageCount={totalPages}
         renderOnZeroPageCount={null}
         pageLinkClassName="align-items-center justify-content-center text-center d-flex pointer not-active"
         className="paginate-page"
