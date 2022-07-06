@@ -5,14 +5,16 @@ const Navbar = () => {
   
   return (
     <div className='navbar-admin-container shadow-bottom d-flex align-items-center p-2'>
-        <div className='row'>
-          <div className='col-md-6'>
-            <div className='d-flex justify-content-start align-items-center'>
-               <AiOutlineMenu size={40} className="pointer"/>
-              
+        <div className='d-flex justify-content-between align-items-center'>
+          <div className=' d-flex align-items-center'>
+            <div>
+            <AiOutlineMenu size={20} className="pointer ms-1"/>
             </div>
+              <div>
+                <NavbarSearch />
+              </div>
           </div>
-          <div className='col-md-6'></div>
+          <div className='d-flex'></div>
         </div>
     </div>
   )

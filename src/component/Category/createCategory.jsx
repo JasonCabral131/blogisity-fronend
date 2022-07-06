@@ -8,7 +8,7 @@ const initialState = {
     category: "",
     description: "",
 }
-const CreateCategory = ({show, setShow}) => {
+const CreateCategory = ({show, setShow, handleGetCategory}) => {
     const [category, setCategory] = useState(initialState);
     const handleClose = () => {
         setShow(false)
@@ -20,6 +20,7 @@ const CreateCategory = ({show, setShow}) => {
      await dispatch(createCategory(category))
       setCategory(initialState);
       setShow(false);
+      handleGetCategory()
      }catch(e){
        console.log(e)
     }

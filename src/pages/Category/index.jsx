@@ -10,28 +10,31 @@ import TablePagination from "../../component/TablePagination";
 
 import CreateCategory from "../../component/Category/createCategory";
 import { getCategory } from "../../redux/actions";
+import Delete from "../../component/Category/Delete";
 const Category = () => {
   const dispatch = useDispatch();
-  const {categories} = useSelector(state => state.category);
+  const { categories } = useSelector((state) => state.category);
   const [page, setPage] = useState(0);
   const [create, setCreate] = useState(false);
+  const [deleteCat, setDeleteCat] = useState(false);
+  const [current, setCurrent] = useState(null);
   const [search, setSearch] = useState("");
   const [totalPages, setTotalPages] = useState(0);
   const columns = [
     {
       name: "ID",
       selector: (row) => row.id,
-      sortable: true
+      sortable: true,
     },
     {
       name: "Name",
       selector: (row) => row.category,
-      sortable: true
+      sortable: true,
     },
     {
       name: "Description",
       selector: (row) => row.description,
-      sortable: true
+      sortable: true,
     },
     {
       cell: (row) => (
@@ -40,7 +43,15 @@ const Category = () => {
 
           <BsPencilSquare color="#fff200" size={18} className="mx-2 pointer" />
 
-          <BsTrash color="#eb4034" size={18} className="pointer" />
+          <BsTrash
+            color="#eb4034"
+            size={18}
+            className="pointer"
+            onClick={(e) => {
+              setDeleteCat(true);
+              setCurrent(row);
+            }}
+          />
         </div>
       ),
       ignoreRowClick: true,
@@ -50,26 +61,25 @@ const Category = () => {
     },
   ];
 
-  const handleGetCategory = async() => {
+  const handleGetCategory = async () => {
     const res = await dispatch(getCategory(page, search));
-    if(res.result){
-      setTotalPages(res.totalPages)
+    if (res.result) {
+      setTotalPages(res.totalPages);
     }
   };
   useEffect(() => {
     handleGetCategory();
-     // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [page]);
-  
+
   useEffect(() => {
-    handleGetCategory()
+    handleGetCategory();
     // eslint-disable-next-line
   }, []);
   const handleSearch = () => {
-   
     handleGetCategory();
     setPage(0);
-  }
+  };
   console.log(categories);
   return (
     <div className="container mt-4">
@@ -90,7 +100,11 @@ const Category = () => {
         </div>
         <hr />
         <div className="d-flex justify-content-between align-items-center mt-2">
-          <TableSearch  search={search} setSearch={setSearch} handleSearch={handleSearch}/>
+          <TableSearch
+            search={search}
+            setSearch={setSearch}
+            handleSearch={handleSearch}
+          />
           <div></div>
         </div>
         <DataTable
@@ -100,9 +114,24 @@ const Category = () => {
           fixedHeaderScrollHeight="400px"
         />
 
-        <TablePagination page={page} setPage={setPage} totalPages={totalPages} />
+        <TablePagination
+          page={page}
+          setPage={setPage}
+          totalPages={totalPages}
+        />
       </div>
-      <CreateCategory show={create} setShow={setCreate} />
+      <CreateCategory show={create} setShow={setCreate} handleGetCategory={handleGetCategory} />
+      <Delete
+        show={deleteCat}
+        setShow={setDeleteCat}
+        id={current ? current.id : null}
+        setPage={setPage} 
+        setTotalPages={setTotalPages}
+        search={search
+        
+        }
+        page={page}
+      />
     </div>
   );
 };

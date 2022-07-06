@@ -2,6 +2,7 @@ import Announcement from "../pages/Announcment";
 import Blogs from "../pages/Blogs";
 import Category from "../pages/Category";
 import Dashboard from "../pages/Dashboard";
+import UserInformation from "../pages/UserInformation";
 
 
 export const adminRoute = [
@@ -14,7 +15,7 @@ export const adminRoute = [
     {
         path: '/blogs',
         name: "Blogs",
-        exact: true,
+  
         component: Blogs 
     },
     {
@@ -28,5 +29,10 @@ export const adminRoute = [
         name: "Announcement",
         exact: true,
         component: Announcement 
+    },
+    {
+        path: '/writer',
+        name: "Writer",
+        component: UserInformation 
     }
 ]

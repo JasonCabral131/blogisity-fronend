@@ -22,7 +22,7 @@ const categoryReducer = (state = initialState, action) => {
     case categoryConstant.CREATE_CATEGORY_SUCCESS:
       return (state = {
         ...state,
-        categories: [...state.categories, action.payload.categories],
+        categories: [...state.categories, action.payload.category],
         loading: false,
       });
 

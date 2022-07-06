@@ -1,0 +1,19 @@
+.category-title-blog {
+  color: rgb(146, 146, 146);
+  margin-top: 8px;
+  font-size: 1rem;
+  width: 100%;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+}
+.category-list-blog {
+letter-spacing: .9px;
+  margin-top: 8px;
+  font-size: 0.7rem;
+  width: 100%;
+  font-weight: bolder;
+  text-transform: capitalize;
+  &:hover{
+    color: rgb(146, 146, 146);
+  }
+}

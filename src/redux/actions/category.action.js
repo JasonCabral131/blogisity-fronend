@@ -6,6 +6,7 @@ export const createCategory = (data) => {
         try{
             const res = await axios.put("/category", data);
             if(res.status === 200){
+                dispatch({type: categoryConstant.CREATE_CATEGORY_SUCCESS, payload: {category: res.data.save}})
                 toast.dismiss();
                 toast.success(`${res.data.msg}!`, {
                     position: toast.POSITION.TOP_RIGHT
@@ -33,6 +34,28 @@ export const getCategory = (page, query) => {
             }
         }catch(e){
             return {result: false}
+        }
+    }
+}
+
+export const deleteCategory = (data) => {
+    return async(dispatch) => {
+        try{
+            const res = await axios.delete(`/category/${data}`);
+            if(res.status === 200){
+                dispatch({type: categoryConstant.DELETE_CATEGORY_SUCCESS, payload: {id: data}});
+                toast.success(`${res.data.msg}!`, {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
+                  console.log(res.data)
+                  return 
+            }
+            return;
+        }catch(e){
+            toast.warn("Failed to delete !", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+              return 
         }
     }
 }

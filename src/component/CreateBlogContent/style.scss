@@ -29,3 +29,33 @@
         }
     }
 }
+.text {
+ 
+    width: 100%;
+    height: auto;
+    outline: none;
+    border: 0;
+    font-family: 'Roboto', sans-serif;;
+    font-size: 16px;
+  }
+  
+  ::placeholder {
+    color: #A9A9A9;
+  }
+  .ck {
+    border: none !important;
+  }
+  .ck-editor__editable_inline {
+    min-height: 500px;
+  }
+@media screen and (max-width: 600px) {
+    .create-blog-container{
+        width: 95% !important;
+    }
+    .sidebar-container{
+        display: none !important;
+    }
+    .ck-editor__editable_inline {
+        min-height: 300px;
+      }
+}
