@@ -28,3 +28,9 @@ export const signUp = (data) => {
         }
     }
 }
+
+export const signout = () => {
+    return async(dispatch) => {
+        dispatch({type: authConstant.LOGOUT_SUCCESS})
+    }
+}

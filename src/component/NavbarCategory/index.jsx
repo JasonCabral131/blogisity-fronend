@@ -1,7 +1,10 @@
 import React from "react";
 import "./style.css";
 import { AiOutlineClose } from "react-icons/ai";
-const NavbarCategories = ({setMobile}) => {
+const NavbarCategories = ({setMobile,categories, ...props}) => {
+  const handleNextLink = (e) => {
+    console.log(props)
+  }
   return (
     <div className="navbar-cat">
       <div className="category-title">
@@ -18,14 +21,11 @@ const NavbarCategories = ({setMobile}) => {
       </div>
       <ul className="list-category">
         <li className="active">Home</li>
-        <li>Politics</li>
-        <li>Business</li>
-        <li>Health</li>
-        <li>Design</li>
-        <li>Sports</li>
-        <li>Technology</li>
-        <li>Food</li>
-        <li>Travel</li>
+        {
+          categories ? Array.isArray(categories) ? categories.map(cat => {
+            return <li key={Math.random()} onClick={handleNextLink}>{cat.category}</li>
+          }) :null: null
+        }
       </ul>
     </div>
   );

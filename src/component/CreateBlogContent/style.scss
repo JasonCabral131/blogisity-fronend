@@ -45,8 +45,21 @@
   .ck {
     border: none !important;
   }
-  .ck-editor__editable_inline {
-    min-height: 500px;
+  .jodit-workplace{
+    min-height: 300px !important;
+  }
+  .jodit-status-bar, .jodit-ui-group_group_info, .jodit-toolbar-button_about, .jodit-toolbar-button_file{
+    display: none !important;
+  }
+  .front-img{
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 8px;
+    &:hover{
+      border: 1px solid var(--lighterblue);
+    }
   }
 @media screen and (max-width: 600px) {
     .create-blog-container{
@@ -56,6 +69,6 @@
         display: none !important;
     }
     .ck-editor__editable_inline {
-        min-height: 300px;
+        min-height: 200px;
       }
 }

@@ -3,7 +3,7 @@ import { Route, Switch} from "react-router-dom";
 import { adminRoute } from '../../config/AdminRoute';
 const Content = () => {
   return (
-    <div className='w-100 container'>
+    <div className='w-100 p-0 m-0 content-provider'>
       <Switch>
       {
         adminRoute.map((route, idx) => {

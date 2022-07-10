@@ -1,11 +1,9 @@
 import React from "react";
 import "./style.scss";
-
-import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
 const LoginSignup = () => {
-  const history = useHistory();
+
   return (
     <div className="login-container">
       <div className="login-wrap">

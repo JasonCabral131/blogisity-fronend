@@ -1,6 +1,7 @@
 import React , { useState} from "react";
 import {useDispatch} from "react-redux";
 import { signUp } from "../../redux/actions";
+import {useHistory} from "react-router-dom";
 const initialState = {
   name: "",
   email: "",
@@ -8,7 +9,8 @@ const initialState = {
   confirm_pass: "",
 }
 const Signup = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [user, setUser] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const handeChange = (e) => {
@@ -20,7 +22,10 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true)
     const res =   await  dispatch(signUp(user));
-    if(res) setUser(initialState);
+    if(res) {
+      setUser(initialState);
+      history.push("/writer");
+    }
     setLoading(false)
   }
   return (

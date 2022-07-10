@@ -2,8 +2,8 @@
 
 
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   font-family: 'Anek Malayalam', sans-serif;
   background-color: #F0F2F5;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./style.scss";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";

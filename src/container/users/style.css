@@ -51,6 +51,7 @@ cursor: pointer;
 }
 .mobile-navbar-container{
     display: none;
+    z-index: 1000;
 }
 @media screen and (max-width: 600px) {
     .content-wrapper{

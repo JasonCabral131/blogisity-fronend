@@ -30,7 +30,6 @@
         width: 150px;
         height: 150px;
         border-radius: 100%;
-        z-index: 100;
         cursor: pointer;
         &:hover{
             background-color: var(--lightergrey);  
@@ -84,5 +83,15 @@
     }
     .writer-content-info{
         margin-left: 110px;
+    }
+    .writer-cover-profile{
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+    .post-follower-followring-container{
+            font-size: .8rem !important;
+            & > * {
+                margin: 0 5px;
+            }
     }
 }

@@ -3,15 +3,17 @@ import Footer from '../../component/Footer';
 import Content from './Content';
 import Navbar from './Navbar';
 import "./style.css";
+import axiosInstance from '../../config/axios';
 const UserContainer = (props) => {
   const [categories, setCategory] = useState([]);
 
   const getCatgery = async() => {
-      try{
-
-      }catch(e){
-        
+    try {
+      const res = await axiosInstance.get("/category/all-categories");
+      if (res.status === 200) {
+        setCategory(res.data.data );
       }
+    } catch (e) {}
   }
   useEffect(() => {
     getCatgery();
@@ -20,8 +22,8 @@ const UserContainer = (props) => {
   
   return (
     <div className='content-wrapper'>
-        <Navbar {...props} categories={[]}/>
-        <Content {...props} categories={[]}/>
+        <Navbar {...props} categories={categories}/>
+        <Content {...props} categories={categories}/>
         <Footer  {...props}/>
     </div>
   )
