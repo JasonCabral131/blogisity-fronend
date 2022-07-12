@@ -10,8 +10,9 @@ function NavbarSearch() {
   const [result, setResult] = useState({});
   const handleSearch = () => {
     setResult({});
-    let cancel;
-    if (val == "") return;
+ 
+    if (val === "") return;
+    let cancel = null;
     axiosInstance({
       url: `/search?query=${val}`,
       method: "GET",
@@ -35,6 +36,7 @@ function NavbarSearch() {
   }
   useEffect(() => {
     handleSearch();
+    // eslint-disable-next-line
   }, [val]);
   const handleClick = (data) => {
     setResult({})
@@ -74,7 +76,7 @@ function NavbarSearch() {
       ) : Object.keys(result).length > 0 ? (
         <div className="search-result shadow">
           {Object.keys(result).map((key) => {
-            if(key == "user"){
+            if(key === "user"){
               return <ResultContent info={key} key={Math.random()}>
                   {
                     result[key].map(data => {

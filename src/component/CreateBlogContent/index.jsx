@@ -8,8 +8,9 @@ import { useDispatch } from "react-redux";
 import { createBlog } from "../../redux/actions";
 import frontImg from "./../../assets/img/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png";
 import { getDataUrl } from "../../config/fetchingBlog";
+
 const initialState = {
-  category: "",
+  category: null,
   blog: "",
   file: {file: null, dataUrl: null},
   content: "",
@@ -21,6 +22,7 @@ const CreateContent = () => {
   const [categories, setCategory] = useState([]);
   const [blog, setBlog] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [editorState, setEditorState] = useState(null);
   const handleGetCategories = async () => {
     try {
       const res = await axios.get("/category/all-categories");
@@ -50,7 +52,13 @@ const CreateContent = () => {
     e.preventDefault();
     const form = new FormData();
     if(!blog.content){
-      toast.warn("Category is required!", {
+      toast.warn("content is required!", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+    if(!blog.category){
+      toast.warn("content is required!", {
         position: toast.POSITION.TOP_RIGHT
       });
       return;
@@ -63,7 +71,7 @@ const CreateContent = () => {
     }
     form.append("title", blog.blog);
     form.append("content", blog.content);
-    form.append("category", blog.category);
+    form.append("category", blog.category.value);
     
     if (blog.file.file) {
       form.append("file", blog.file.file);
@@ -73,8 +81,9 @@ const CreateContent = () => {
    if(res) setBlog(initialState);
    setLoading(false)
   };
+
   return (
-    <div className="container bg-white p-2 shadow ">
+    <div className="container bg-white p-2 shadow mt-3">
       <form onSubmit={handleSubmit}>
         <div className="row">
         
@@ -101,12 +110,13 @@ const CreateContent = () => {
             <div className="form-group">
               <label>Blog Category</label>
               <Select
+              value={blog.category}
                 menuPortalTarget={document.body}
                 menuPosition={"fixed"}
                 options={categories}
                 onChange={(e) => {
                   setBlog((prev) => {
-                    return { ...prev, category: e.value };
+                    return { ...prev, category: e };
                   });
                 }}
               />
@@ -126,6 +136,14 @@ const CreateContent = () => {
               required
             />
           </div>
+          <div className="w-100 d-flex justify-content-end align-items-center mt-5">
+          <button className="btn btn-secondary ms-1" type="submit" disabled={loading}>
+          {loading ?   <div className="d-flex justify-content-center align-items-center"> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <span className="ml-1">Loading...</span> 
+  </div>
+  :  'Publish'}
+          </button>
+        </div>
           </div>
         </div>
      
@@ -140,6 +158,8 @@ const CreateContent = () => {
             },
             readonly: false,
             placeholder: "Start typings...",
+            toolbarAdaptive: false,
+          
           }}
           tabIndex={1}
           onBlur={(newContent) => {
@@ -147,16 +167,10 @@ const CreateContent = () => {
               return { ...prev, content: newContent };
             });
           }}
+      
        
         />
-        <div className="w-100 d-flex justify-content-center align-items-center mt-1">
-          <button className="btn btn-secondary ms-1 w-75" type="submit" disabled={loading}>
-          {loading ?   <div className="d-flex justify-content-center align-items-center"> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  <span className="ml-1">Loading...</span> 
-  </div>
-  :  'Publish'}
-          </button>
-        </div>
+
       </form>
     </div>
   );

@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   user: null,
   isAuthenticated: false,
   authenticating: false,
+  users: [],
 };
 
 const authReducer = (state = INITIAL_STATE, action) => {
@@ -23,7 +24,11 @@ const authReducer = (state = INITIAL_STATE, action) => {
         authenticating: false,
         user: action.payload.user,
       });
-
+      case authConstant.GET_ADMINS_SUCCESS:
+        return (state = {
+          ...state,
+          user : action.payload.users
+        })
     case authConstant.LOGOUT_SUCCESS:
       return (state = {
         ...INITIAL_STATE,

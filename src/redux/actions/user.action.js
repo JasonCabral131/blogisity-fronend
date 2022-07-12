@@ -34,3 +34,16 @@ export const signout = () => {
         dispatch({type: authConstant.LOGOUT_SUCCESS})
     }
 }
+export const getUsers = (page) => {
+    return async({dispatch}) => {
+        try{
+            const res = await axiosInstance.get('/user?page=' +page );
+            if(res.status === 200){
+                return res.data;
+            }
+            return {result: false};
+        }catch(e){
+            return {result: false};
+        }
+    }
+}

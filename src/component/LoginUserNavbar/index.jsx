@@ -10,14 +10,14 @@ const LoginUserNavbar = () => {
   const history = useHistory();
   return (
     <div className='user-information'>
-      <Dropdown onPoint={<AiOutlineBell className='pointer'/>}>
+      <Dropdown onPoint={<AiOutlineBell className='pointer' size={23}/>}>
      
       </Dropdown>
         
       
-        <Dropdown onPoint={  <AiOutlineMessage className='pointer' />}></Dropdown>
+        <Dropdown onPoint={  <AiOutlineMessage className='pointer' size={23} />}></Dropdown>
         <div className=''>|</div>
-       <div><AiOutlineLogout className='pointer' onClick={() => {
+       <div><AiOutlineLogout className='pointer' size={23} onClick={() => {
          history.push("/")
         dispatch(signout());
        

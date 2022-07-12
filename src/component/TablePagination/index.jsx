@@ -35,7 +35,7 @@ const TablePagination = ({ page, setPage, totalPages}) => {
         <div
           onClick={onNextPage}
           className={`${
-            page === totalPages
+            page + 1 === totalPages
               ? "bg-gray-50 cursor-not-allowed "
               : "bg-blue-50"
           }  align-items-center justify-content-center text-center d-flex p-2 rounded`}
