@@ -22,7 +22,7 @@ const CreateCategory = ({show, setShow, handleGetCategory}) => {
       setShow(false);
       handleGetCategory()
      }catch(e){
-       console.log(e)
+
     }
   
     

@@ -27,11 +27,11 @@ const defaultFonts = [
   "Trebuchet MS",
   "Verdana",
 ];
-const CreateContent = () => {
+const UpdateContent = ({content}) => {
   const imgRef = useRef();
   const dispatch = useDispatch();
   const [categories, setCategory] = useState([]);
-  const [blog, setBlog] = useState(initialState);
+  const [blog, setBlog] = useState(content ? content : initialState);
   const [loading, setLoading] = useState(false);
 
   const handleGetCategories = async () => {
@@ -232,4 +232,4 @@ const CreateContent = () => {
   );
 };
 
-export default CreateContent;
+export default UpdateContent;

@@ -25,7 +25,7 @@ const Navbar = ({ categories, ...props }) => {
   };
  
   return (
-    <div className="navbar-container">
+    <div className="navbar-container ">
       <div className="navbar-content">
         <div className="navbar-title">Blogisity</div>
         <div className="navbar-content-list">
@@ -43,7 +43,7 @@ const Navbar = ({ categories, ...props }) => {
             className="pointer menu-navbar"
             onClick={(e) => {
               setMobile(!mobile);
-              console.log(mobile);
+            
             }}
           />
         </div>

@@ -39,18 +39,7 @@
     font-size: 16px;
   }
   
-  ::placeholder {
-    color: #A9A9A9;
-  }
-  .ck {
-    border: none !important;
-  }
-  .jodit-workplace{
-    min-height: 200px !important;
-  }
-  .jodit-status-bar, .jodit-ui-group_group_info, .jodit-toolbar-button_about, .jodit-toolbar-button_file{
-    display: none !important;
-  }
+
   .front-img{
     width: 80%;
     height: 200px;
@@ -61,6 +50,24 @@
       border: 1px solid var(--lighterblue);
     }
   }
+  .se-wrapper {
+    height: 450px !important;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 7px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(191, 191, 191);
+        border-radius: 5px;
+      }
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+}
+.se-wrapper-inner{
+  height: 100% !important;
+}
 @media screen and (max-width: 600px) {
     .create-blog-container{
         width: 95% !important;

@@ -1,22 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 
 body {
   margin: 0 !important;
   padding: 0 !important;
-  font-family: 'Anek Malayalam', sans-serif;
-  background-color: #dcdcdc;
+  font-family: 'Poppins', sans-serif;
+
 }
 :root{
   --lighterblue: #306BEC;
   --lightgrey: #F0F2F5;
   --lightergrey: #e5e5e5;
+  --text-grey: #838392;
+  
 }
 #root{
   width: 100% !important;
 }
 .pointer{
-  cursor: pointer;
+  cursor:pointer !important;
 }
 .table-title{
   font-size: 1.5rem;
@@ -54,4 +56,8 @@ body {
   padding-left: 1rem;
   font-weight: 600;
   color: rgb(121, 121, 121);
+}
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0rem !important;
 }

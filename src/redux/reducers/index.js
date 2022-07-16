@@ -5,9 +5,11 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth.reducer";
 import categoryReducer from "./category.reducers";
+import socketReducer from "./socket.reducer";
 export const rootReducer = combineReducers({
     auth: authReducer,
-    category: categoryReducer
+    category: categoryReducer,
+    socket: socketReducer,
   });
   const configStorage = {
     key: "root",

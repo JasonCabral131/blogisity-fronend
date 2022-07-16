@@ -5,7 +5,7 @@ import axiosInstance from './axios'
 export default function useFetchingBlog ( page, url) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [blog, setBlog] = useState([]);
+  const [blog, setBlogFetch] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -16,7 +16,7 @@ export default function useFetchingBlog ( page, url) {
       method: 'GET',
       cancelToken: new axios.CancelToken(c => cancel = c),
     }).then(res => {
-      setBlog(prev => {
+      setBlogFetch(prev => {
         return [...prev, ...res.data.blog]
       })
       setHasMore( res.data.totalPages > page)
@@ -28,7 +28,7 @@ export default function useFetchingBlog ( page, url) {
     });
     return cancel;
   }, [page, url])
-  return {loading, error, blog, hasMore}
+  return {loading, error, blog, hasMore, setBlogFetch}
 }
 
 export const getDataUrl = (file) => {

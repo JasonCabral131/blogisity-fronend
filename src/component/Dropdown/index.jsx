@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./style.scss"
-const Dropdown = ({onPoint,children}) => {
+const Dropdown = ({onPoint, headingView,children}) => {
     const [dropdown, setDropDown] = useState(false);
   return (
   
@@ -8,8 +8,14 @@ const Dropdown = ({onPoint,children}) => {
         <div onClick={() => setDropDown(!dropdown)}>{onPoint}</div>
        {
         dropdown ? <div className='dropdown-content shadow p-1'>
-        {children}
-    </div>: null
+          <div className='content-dropdown-provider'>
+          {children}
+          </div>
+          {
+            headingView ? <div className='view-all-content w-100 pointer' >{headingView.msg}</div>: null
+          }
+          
+        </div>: null
        }
         
     </div>

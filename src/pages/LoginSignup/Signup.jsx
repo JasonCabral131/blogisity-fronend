@@ -2,6 +2,7 @@ import React , { useState} from "react";
 import {useDispatch} from "react-redux";
 import { signUp } from "../../redux/actions";
 import {useHistory} from "react-router-dom";
+import { toast } from 'react-toastify';
 const initialState = {
   name: "",
   email: "",
@@ -20,8 +21,34 @@ const Signup = () => {
   }
   const handleSignUp = async(e) => {
     e.preventDefault();
-    setLoading(true)
+    if(user.name.length <1){
+      toast.warn("Name is required !", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+    if(user.email.length <1){
+      toast.warn("Email is required !", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+   
+    if(user.password.length < 1){
+      toast.warn("Password is required !", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+    if(user.password !== user.confirm_pass){
+      toast.warn("Password does not match!", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+    setLoading(true);
     const res =   await  dispatch(signUp(user));
+  
     if(res) {
       setUser(initialState);
       history.push("/writer");
@@ -68,11 +95,12 @@ const Signup = () => {
           className="input"
           data-type="password"
           name="confirm_pass" onChange={handeChange}
+          required
         />
       </div>
 
       <div className="group">
-        <button className="button" onClick={handleSignUp} onSubmit={handleSignUp}>
+        <button className="button" onClick={handleSignUp} onSubmit={handleSignUp} disabled={loading}>
         {
 loading ? 
 <div className='d-flex justify-content-center align-items-center'>

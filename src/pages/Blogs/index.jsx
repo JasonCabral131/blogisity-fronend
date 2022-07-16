@@ -5,7 +5,9 @@ import {Switch, Redirect, Route} from "react-router-dom";
 import AllBlogs from '../../component/AllBlogs';
 import BlogCategoryContent from '../../component/BlogCategory';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Blogs = () => {
+  const {user} = useSelector(state => state.auth);
   const history = useHistory();
   return (
     <div className='container'>
@@ -15,7 +17,7 @@ const Blogs = () => {
               history.push("/admin/writer")
             }}>
               <img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/14/e2/d4/66/an-old-man-with-his-cigarette.jpg" alt="user-infomation"/>
-              <div className='text-wrap text-truncate user-info pointer'>Jason P. Cabral </div>
+              <div className='text-wrap text-truncate user-info pointer'>{user? user.name : ""}</div>
             </div>
             <CategoriesList />
         </div>

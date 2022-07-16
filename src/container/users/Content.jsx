@@ -1,45 +1,70 @@
-import React from 'react'
-import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
-import Home from '../../component/Home';
-import {useSelector} from "react-redux";
-import UserInformation from '../../pages/UserInformation';
-import VerificationEmail from '../../component/VerificationEmail';
-import Page404 from '../../pages/Page404';
-const Content = ({categories}) => {
-  const {user} = useSelector(state => state.auth)
+import React from "react";
+import {  Switch, Route, Redirect } from "react-router-dom";
+import Home from "../../component/Home";
+import { useSelector } from "react-redux";
+import UserInformation from "../../pages/UserInformation";
+import VerificationEmail from "../../component/VerificationEmail";
+import Page404 from "../../pages/Page404";
+import EmailVerification from "../../pages/EmailVerification";
+import ViewCategory from "../../pages/ViewCategory";
+import BlogView from "../../pages/BlogView";
+const Content = ({ categories }) => {
+  const { user } = useSelector((state) => state.auth);
   return (
-    <div className="w-100">
-      <BrowserRouter>
+    <div className="w-100 user-container-content-provider">
+  
         <Switch>
           <Route
-            path={"/"}
+            path={"/home"}
             exact
             render={(route) => {
               return <Home {...route} />;
             }}
           />
           <Route
-            path={"/writer"}
-            exact
+            path={"/verify-email-address/:passwordToken"}
+            
             render={(route) => {
-                if(user){
-                  if(user.onboarding === 1) return <UserInformation {...route} />;
-                  return <VerificationEmail {...route}/>
-                 
-                }else{
-                 return <Redirect to="/" />
-                }
-             
+              return <EmailVerification {...route} />;
             }}
           />
-            <Route path={'/404'} render={route => {
-            return <Page404 {...route}/>
-           }}/>
-          <Redirect to="/404" />
+            <Route
+            path={"/blog-content/:blog/:id"}
+            
+            render={(route) => {
+              return <BlogView {...route} />;
+            }}
+          />
+          <Route 
+          path="/view-content/:category/:categoryId"
+          render={(route) => {
+            return <ViewCategory {...route} />;
+          }}
+          />
+          <Route
+            path={"/writer"}
+            
+            render={(route) => {
+              if (user) {
+                if (user.onboarding === 1)
+                  return <UserInformation {...route} />;
+                return <VerificationEmail {...route} />;
+              } else {
+                return <Redirect to="/" />;
+              }
+            }}
+          />
+          <Route
+            path={"/404"}
+            render={(route) => {
+              return <Page404 {...route} />;
+            }}
+          />
+          <Redirect to="/home" />
         </Switch>
-      </BrowserRouter>
+ 
     </div>
   );
-}
+};
 
-export default Content
+export default Content;

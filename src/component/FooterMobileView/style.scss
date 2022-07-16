@@ -1,0 +1,33 @@
+
+.container-footer-mobile-view{
+    display: none;
+}
+.mobile-user-Footer{
+    width: 130px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: -20px;
+    background-color: #fff !important;
+    border-radius: 50%;
+    border: 1px solid var(--lightergrey);
+    &:hover{
+        border:2px solid var(--lighterblue);
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+}
+@media screen and (max-width: 700px) {
+    .container-footer-mobile-view{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+}

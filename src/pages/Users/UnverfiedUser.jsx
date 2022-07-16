@@ -25,7 +25,7 @@ const UnverfiedUser = () => {
 
   const handleGetUser = async() => {
    const res =  await dispatch(getUsers(page))
-   console.log(res)
+ 
   }
   useEffect(() => {
     handleGetUser()

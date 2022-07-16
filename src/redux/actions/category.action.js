@@ -11,7 +11,7 @@ export const createCategory = (data) => {
                 toast.success(`${res.data.msg}!`, {
                     position: toast.POSITION.TOP_RIGHT
                   });
-                  console.log(res.data)
+              
                   return true
             }
         }catch(e){
@@ -27,7 +27,7 @@ export const getCategory = (page, query) => {
     return async(dispatch) => {
         try{
             dispatch({type: categoryConstant.CATEGORY_REQUEST})
-            const res = await axios.get(`/category/categories?page=${page}&query=${query}`);
+            const res = await axios.get(`/category/categories?create=1&page=${page}&query=${query}`);
             if(res.status === 200){
                 dispatch({type: categoryConstant.GET_CATEGORY_SUCCESS, payload: {categories:res.data.categories}})
                 return {result: true, totalPages: res.data.totalPages}
@@ -47,7 +47,7 @@ export const deleteCategory = (data) => {
                 toast.success(`${res.data.msg}!`, {
                     position: toast.POSITION.TOP_RIGHT
                   });
-                  console.log(res.data)
+               
                   return 
             }
             return;

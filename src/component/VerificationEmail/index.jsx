@@ -1,6 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import "./style.scss";
+import { useDispatch } from "react-redux";
+import { resendEmailAddressToken } from "../../redux/actions/user.action";
 const VerificationEmail = () => {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    const handleResentEmail = async() => {
+        try{
+            setLoading(true);
+           await dispatch(resendEmailAddressToken());
+            setLoading(false);
+        }catch(e){
+            setLoading(false);
+        }
+    }
   return (
     <div className="verification-container ">
         <div className="content-container-verify">
@@ -14,8 +27,13 @@ const VerificationEmail = () => {
                 </h4>
             </div>
             <div >
-                <button id="resend-email" className="btn btn-primary btn-lg">
-                    Resend Verification Email 
+                <button id="resend-email" className="btn btn-primary btn-lg" onClick={handleResentEmail}>
+                   {
+                    loading ? <div className="d-flex justify-content-center align-items-center">
+                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...
+                    </div> : "Resend Verification Email"
+                   }
                 </button>
             </div>
         </div>

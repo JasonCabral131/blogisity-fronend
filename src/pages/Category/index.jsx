@@ -80,7 +80,7 @@ const Category = () => {
     handleGetCategory();
     setPage(0);
   };
-  console.log(categories);
+
   return (
     <div className="container mt-4">
       <div className="card shadow py-2 px-4">
