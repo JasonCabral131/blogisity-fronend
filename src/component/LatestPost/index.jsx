@@ -33,14 +33,14 @@ const LatestPost = ({ blog , loadingLatest,proping , ...props}) => {
       {loadingLatest ? <div className="latest-container-content fade-in">
           <Skeleton height={400}/>
       </div> :blog.map((data, index) => {
-        if (index == current) {
+        if (index === current) {
           return (
             <div
               className={`latest-container-content fade-in`}
               key={Math.random()}
              
             >
-              <img src={data.headingImg.url} />
+              <img src={data.headingImg.url} alt={Math.random()}/>
               <div className=" d-flex flex-column justify-content-center align-items-start  latest-content">
                 <div className="latest-title">Latest Published</div>
                 <div className="text-wrap w-100 latest-blog-title" onClick={() => {

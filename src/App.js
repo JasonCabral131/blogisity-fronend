@@ -31,6 +31,7 @@ const  App = () => {
         dispatch(socketConnection(newSocket));
       });
     }
+       // eslint-disable-next-line
  
    }, [user]);
    
@@ -38,8 +39,9 @@ const  App = () => {
     if(user){
 
       handleUserVerify();
+         // eslint-disable-next-line
     }
-   /* eslint-disable react/no-direct-mutation-state */
+     // eslint-disable-next-line
   }, [])
   return (
    <BrowserRouter>

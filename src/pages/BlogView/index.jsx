@@ -58,9 +58,11 @@ const BlogView = () => {
   useEffect(() => {
     handleGetBlog();
     setBlogFetch([]);
+    // eslint-disable-next-line
   }, [id]);
   useEffect(() => {
     handleGetBlog();
+    // eslint-disable-next-line
   }, []);
   const onEmojiClick = (event, emojiObject) => {
     setComment((prev) => {
@@ -292,6 +294,7 @@ const BlogView = () => {
                     
                     }}
                     src={noContent}
+                    alt={Math.random()}
                   />
                   <h4>No Suggestion Found</h4>
                 </div>
