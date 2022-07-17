@@ -13,3 +13,9 @@ export const imageUploadCallBack = (file) =>
       });
     };
   });
+
+  export const innerText = (data) => {
+    const div = document.createElement("div");
+    div.innerHTML = data;
+    return div.innerText;
+  };

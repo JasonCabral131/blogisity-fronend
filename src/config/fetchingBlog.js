@@ -17,7 +17,25 @@ export default function useFetchingBlog ( page, url) {
       cancelToken: new axios.CancelToken(c => cancel = c),
     }).then(res => {
       setBlogFetch(prev => {
-        return [...prev, ...res.data.blog]
+        if (prev.length > 0) {
+          return [
+            ...prev,
+            ...res.data.blog.map((data, index) => {
+              return { ...data, active: false };
+            }),
+          ];
+        } else {
+          return [
+            ...prev,
+            ...res.data.blog.map((data, index) => {
+              if (index === 0) {
+                return { ...data, active: true };
+              }
+              return { ...data, active: false };
+            }),
+          ];
+        }
+       
       })
       setHasMore( res.data.totalPages > page)
       setLoading(false)
@@ -28,7 +46,7 @@ export default function useFetchingBlog ( page, url) {
     });
     return cancel;
   }, [page, url])
-  return {loading, error, blog, hasMore, setBlogFetch}
+  return {loading, error, blog, hasMore, setBlogFetch, setHasMore}
 }
 
 export const getDataUrl = (file) => {

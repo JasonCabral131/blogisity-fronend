@@ -1,0 +1,111 @@
+.skeleton-category-loader{
+    width: 80%;
+}
+.gallery-list-provider{
+    display: flex;
+    justify-content:start;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    .gallery-list-content-active-data{
+        padding-right: 15px;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+        img{
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        .active-content-title{
+            margin-top: 10px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            &:hover{
+                color: var(--text-grey);
+            }
+        }
+        .active-content-inner{
+            color: var(--text-grey);
+        }
+        .category-creator{
+            margin-top: 20px;
+            font-size: 1rem;
+            & > * {
+                margin : 0 2px;
+            }
+            .creator-name-category{
+                font-weight: 600;
+                text-transform: capitalize;
+                cursor: pointer;
+                &:hover{
+                    color: var(--text-grey);
+                }
+            }
+        }
+    }
+    .gallery-blog-content{
+        width: 40%;
+        height: 550px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 5px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: rgb(191, 191, 191);
+            border-radius: 5px;
+          }
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+        .gallery-list-blog-content{
+            margin-top: 10px;
+         
+            width: 100%;
+          
+            .wrap-img-list-blog{
+                width: 50% !important;
+                height: 150px;
+                display: block;
+                img{
+                    width: 100% !important;
+                   height: 100%;
+                }
+            }
+            
+            .gallery-blog-title{
+                font-size: 1.4rem;
+                padding: 0 10px;
+                font-weight: 700;
+                width: 100%;
+                cursor: pointer;
+                &:hover{
+                    color: #808090;
+                }
+            }
+        }
+        .active{
+            background-color: #f0f1f1;
+        }
+        .gallery-blog-content:first-child{
+            margin-top: 0px !important;
+        }
+    }
+}
+
+@media screen and(max-width: 600px) {
+    .skeleton-category-loader{
+        width: 98%;
+    }
+    .gallery-list-provider{
+        flex-direction: column !important;
+        .gallery-list-content-active-data,  .gallery-blog-content{
+            width: 100%;
+        }
+       
+
+    }
+}

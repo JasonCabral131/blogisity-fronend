@@ -61,3 +61,20 @@ dl, ol, ul {
   margin-top: 0;
   margin-bottom: 0rem !important;
 }
+.category-info-suggestion{
+  font-size: .8rem;
+  &> * {
+      margin-right: 8px;
+  }
+ 
+}
+.creator-name-suggestion{
+  font-size: .8rem;
+  color: black;
+  text-transform: capitalize;
+  font-weight: 800;
+  cursor: pointer;
+  &:hover{
+      color: var(--text-grey);
+  }
+}
