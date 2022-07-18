@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginUserNavbar from "../../component/LoginUserNavbar";
 import Dropdown from "../../component/Dropdown";
 import Avatar from "react-avatar";
+import {FaRegUserCircle} from "react-icons/fa";
 import {
   AiOutlineBell,
   AiOutlineLogout,
@@ -57,22 +58,32 @@ const Navbar = ({ categories, ...props }) => {
                   ) : null
                 }
               >
+                 <div className="p-2 pt-4 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav" onClick={() => {
+                  history.push("/writer");
+                 }}>
+                  <FaRegUserCircle className="pointer" size={23} />
+                  <div className="ps-2">{user?.name} </div>
+                </div>
+                <hr />
                 <div className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav">
-                    <AiOutlineBell className="pointer" size={23} />
-                    <div className="ps-2">Notifications </div>
+                  <AiOutlineBell className="pointer" size={23} />
+                  <div className="ps-2">Notifications </div>
+                  <div className="ms-2 badge badge-pill bg-warning p-2">1</div>
                 </div>
                 <div className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav">
-                    <AiOutlineMessage className="pointer" size={23} />
-                    <div className="ps-2"> Messages </div>
+                  <AiOutlineMessage className="pointer" size={23} />
+                  <div className="ps-2"> Messages </div>
+                  <div className="ms-2 badge badge-pill bg-primary p-2">1</div>
                 </div>
-                <div className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav" 
-                onClick={() => {
-                  history.push("/");
-                  dispatch(signout());
-                }}
+                <div
+                  className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav"
+                  onClick={() => {
+                    history.push("/");
+                    dispatch(signout());
+                  }}
                 >
-                    <AiOutlineLogout className="pointer" size={23} />
-                    <div className="ps-2">Logout </div>
+                  <AiOutlineLogout className="pointer" size={23} />
+                  <div className="ps-2">Logout </div>
                 </div>
               </Dropdown>
             ) : null}

@@ -20,6 +20,9 @@ body {
 .pointer{
   cursor:pointer !important;
 }
+.no-allowed-pointer{
+  cursor:not-allowed !important;
+}
 .table-title{
   font-size: 1.5rem;
   font-weight: 900;

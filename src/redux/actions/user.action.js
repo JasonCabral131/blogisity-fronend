@@ -131,3 +131,49 @@ export const signInUser = (data) => {
         }
     }
 }
+export const changeProfile = (file) => {
+    return async(dispatch) => {
+        try{
+            const res = await axiosInstance.put("/user/change-profile", file);
+            if(res.status === 200){
+                dispatch({type: authConstant.USER_CHANGE_PROFILE_SUCCESS, payload: {profile: res.data.profile}})
+                toast.success("Profile Successfully Updated", {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
+                return true;
+            }
+            toast.warn("Failed to Update User Profile", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+            return false;
+        }catch(e){
+            toast.error("Failed to Update User Profile", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+            return false;
+        }
+    }
+}
+export const changeBackgroundProfile = (file) => {
+    return async(dispatch) => {
+        try{
+            const res = await axiosInstance.put("/user/change-background-profile", file);
+            if(res.status === 200){
+                dispatch({type: authConstant.USER_CHANGE_PROFILE_SUCCESS, payload: {background: res.data.background}})
+                toast.success("Profile Successfully Updated", {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
+                return true;
+            }
+            toast.warn("Failed to Update User Profile", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+            return false;
+        }catch(e){
+            toast.error("Failed to Update User Profile", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+            return false;
+        }
+    }
+}
