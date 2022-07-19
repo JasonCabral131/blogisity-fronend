@@ -39,11 +39,9 @@ const authReducer = (state = INITIAL_STATE, action) => {
         user : {...state.user, profile: action.payload.profile}
       })
       case authConstant.USER_CHANGE_BACKGROUND_PROFILE_SUCCESS:
-        console.log("original State", state.background);
-        console.log("new emiting", action.payload.background)
         return (state = {
           ...state,
-          user : {...state.user}
+          user : {...state.user, background: action.payload.background}
         })
     default:
       return state;

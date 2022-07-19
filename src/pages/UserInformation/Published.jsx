@@ -7,11 +7,11 @@ import BlogBoxContent from "../../component/BlogBoxContent";
 import LoaderBlog from "../../component/LoaderBlog";
 import useFetchingBlog from "../../config/fetchingBlog";
 import noContent from "./../../assets/img/no-content.png"
-const Published = () => {
+const Published = ({urlPublished}) => {
   const [page, setPage] = useState(0);
   const [triggerUpdate, setTriggerUpdate] = useState(0);
   const observer = useRef();
-  const {loading, blog, hasMore, setBlogFetch} = useFetchingBlog(page, `/user/published?page=${page}&triggerUpdate=${triggerUpdate}`);
+  const {loading, blog, hasMore, setBlogFetch} = useFetchingBlog(page, `${urlPublished}?page=${page}&triggerUpdate=${triggerUpdate}`);
   
   const triggerRef = useCallback(node => {
 

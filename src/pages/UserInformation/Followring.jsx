@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Followring = () => {
+const Followring = ({number = 0}) => {
   return (
 <div className='d-flex justify-content-start align-items-center'>
-        <div>0</div>
+        <div>{number}</div>
        <div className='ms-1'>Following</div> 
     </div>
   )

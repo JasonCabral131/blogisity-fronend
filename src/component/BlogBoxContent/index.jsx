@@ -68,7 +68,11 @@ const BlogBoxContent = ({ data, setTriggerUpdate }) => {
             <div className="editing-content-container">
               {user && show && data?.creator?._id === user?._id ? (
                 <div className="p-2 shadow content-view-edit">
-                  <div className="content-btn d-flex justify-content-start align-items-center text-primary pointer p-1">
+                  <div className="content-btn d-flex justify-content-start align-items-center text-primary pointer p-1" 
+                  onClick={() => {
+                    history.push(`/writer/update-user-blog/${data._id}`)
+                  }}
+                  >
                     <BiEdit /> <span className="ms-1">Update</span>
                   </div>
                   <div className="content-btn">
@@ -78,8 +82,8 @@ const BlogBoxContent = ({ data, setTriggerUpdate }) => {
                   </div>
                 </div>
               ) : null}
-
-              <HiOutlineDotsVertical onClick={() => setShow(!show)} />
+            {user && data?.creator?._id === user?._id ?  <HiOutlineDotsVertical onClick={() => setShow(!show)} /> : null }
+             
             </div>
           </div>
           <div className="blog-title text-wrap" onClick={() => {

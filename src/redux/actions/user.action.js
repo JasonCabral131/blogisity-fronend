@@ -159,7 +159,7 @@ export const changeBackgroundProfile = (file) => {
         try{
             const res = await axiosInstance.put("/user/change-background-profile", file);
             if(res.status === 200){
-                dispatch({type: authConstant.USER_CHANGE_PROFILE_SUCCESS, payload: {background: res.data.background}})
+                dispatch({type: authConstant.USER_CHANGE_BACKGROUND_PROFILE_SUCCESS, payload: {background: res.data.background}})
                 toast.success("Profile Successfully Updated", {
                     position: toast.POSITION.TOP_RIGHT
                   });

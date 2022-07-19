@@ -15,6 +15,7 @@ import { useRef } from "react";
 import { changeBackgroundProfile, changeProfile } from "../../redux/actions";
 import LoadingProFileImg from "./../../assets/img/LoadingImg.gif"
 import LoadingBngImg from "./../../assets/img/loadingBackground.gif";
+import UpdateBlog from "../../component/CreateBlogContent/UpdateBlog";
 const UserInformation = (props) => {
   const history = useHistory();
   const imgeRef = useRef();
@@ -25,28 +26,35 @@ const UserInformation = (props) => {
   const dispatch = useDispatch();
   const handleChangeProfile = async (e) => {
     try {
-      setLoadingProfile(true);
+      
       const { files } = e.target;
       for (let file of files) {
         const form = new FormData();
         form.append("file", file)
-         await dispatch(changeProfile(form))
-         setLoadingProfile(false);
+        if(file){
+          setLoadingProfile(true);
+          await dispatch(changeProfile(form))
+          setLoadingProfile(false);
+        }
+    
       }
+      setLoadingProfile(false);
     } catch (e) {
       setLoadingProfile(false);
     }
   };
   const handleChangeBackgroundProfile = async (e) => {
     try {
-      setLoadingBNG(true);
+    
       const { files } = e.target;
       for (let file of files) {
         const form = new FormData();
         form.append("file", file)
+        setLoadingBNG(true);
          await dispatch(changeBackgroundProfile(form))
          setLoadingBNG(false);
       }
+    
     } catch (e) {
       setLoadingBNG(false);
     }
@@ -66,7 +74,7 @@ const UserInformation = (props) => {
             }
             alt="profile cover"
           />
-          <div  className={`edit-cover-photo-container ${loadingBNG ? "no-allowed-pointer" : ""}`} onClick={() => {
+          <div  className={`edit-cover-photo-container shadow ${loadingBNG ? "no-allowed-pointer" : ""}`} onClick={() => {
               if(!loadingBNG) bngRef.current.click();
           }}>
           <AiOutlineCamera size={20} />
@@ -130,6 +138,7 @@ const UserInformation = (props) => {
             </div>
           </div>
         </div>
+        
         <div className="writer-nav d-flex">
           <div
             className={`${
@@ -184,7 +193,14 @@ const UserInformation = (props) => {
             }
             exact
             render={(route) => {
-              return <Published />;
+              return <Published urlPublished={"/user/published"} {...route}/>;
+            }}
+          />
+           <Route
+            path={"/writer/update-user-blog/:id"}
+            exact
+            render={(route) => {
+              return <UpdateBlog  {...route}/>;
             }}
           />
         </Switch>

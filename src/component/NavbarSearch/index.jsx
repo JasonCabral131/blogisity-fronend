@@ -7,10 +7,12 @@ import { useEffect } from "react";
 import Avatar from "react-avatar";
 import { useHistory } from "react-router-dom";
 import slugify from "slugify";
+import {useSelector} from "react-redux";
 function NavbarSearch() {
   const [searching, setSeaching] = useState(false);
   const [val, setVal] = useState("");
   const [result, setResult] = useState({});
+  const {user} = useSelector(state => state.auth);
   const history = useHistory();
   const handleSearch = () => {
     setResult({});
@@ -45,6 +47,17 @@ function NavbarSearch() {
   }, [val]);
   const handleClick = (data) => {
     setResult({});
+    if(user){
+      if(data._id === user._id ){
+        history.push("/writer")
+        return;
+      }else{
+        history.push(`/view-writer/${data._id}`)
+      }
+    }else{
+      history.push(`/view-writer/${data._id}`)
+    }
+ 
   };
   return (
     <button

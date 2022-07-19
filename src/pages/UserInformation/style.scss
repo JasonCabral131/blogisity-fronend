@@ -97,6 +97,8 @@
     display: flex;
     margin: 0 auto;
     position: relative;
+    border-top: 1px solid var(--lightergrey);
+    padding-top: 10px;
     & > * {
         margin: 0 10px;
         cursor: pointer;

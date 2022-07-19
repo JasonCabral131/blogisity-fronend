@@ -1,0 +1,25 @@
+.chat-btn-message, .follow-btn-message{
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    font-weight: 600;
+    width: 100px;
+    border-radius: 5px;
+    padding: 5px;
+   
+}
+.chat-btn-message{
+    color: #fff;
+    background-color: var(--lighterblue);
+    &:hover{
+        background-color: #1A6ED8;
+    }
+}
+.follow-btn-message{
+    &:hover{
+        background-color: #dddee0;
+    }
+}

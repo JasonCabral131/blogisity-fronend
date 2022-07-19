@@ -8,6 +8,7 @@ import Page404 from "../../pages/Page404";
 import EmailVerification from "../../pages/EmailVerification";
 import ViewCategory from "../../pages/ViewCategory";
 import BlogView from "../../pages/BlogView";
+import UserView from "../../pages/UserView";
 const Content = ({ categories }) => {
   const { user } = useSelector((state) => state.auth);
   return (
@@ -53,6 +54,13 @@ const Content = ({ categories }) => {
                 return <Redirect to="/" />;
               }
             }}
+          />
+          <Route 
+          path={"/view-writer/:id"}
+          name="View Writer"
+          render={(route) => {
+            return <UserView {...route}/>
+          }}
           />
           <Route
             path={"/404"}
