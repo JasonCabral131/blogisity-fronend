@@ -19,25 +19,25 @@ export const createBlog = (data) => {
     }
 }
 
-export const updateBlog = (data) => {
+export const updateBlogContent = (data) => {
    return async(dispatch) => {
     try{
-        const res = await axiosInstance.post("/blog/update-blog", data);
+        const res = await axiosInstance.put("/blog/update-blog", data);
         if(res.status === 200){
             toast.success("Successfully Updated", {
                 position: toast.POSITION.TOP_RIGHT
               });
-            return true;
+            return {result: true, blog: res.data.blog};
         }
         toast.warn("Failed to Update !", {
             position: toast.POSITION.TOP_RIGHT
           });
-        return false
+        return {result: false}
     }catch(e){
         toast.warn("Failed to Update !", {
             position: toast.POSITION.TOP_RIGHT
           });
-        return false
+        return {result: false}
     }
    }
 }

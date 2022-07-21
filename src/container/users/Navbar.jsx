@@ -70,10 +70,12 @@ const Navbar = ({ categories, ...props }) => {
                   <div className="ps-2">Notifications </div>
                   <div className="ms-2 badge badge-pill bg-warning p-2">1</div>
                 </div>
-                <div className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav">
+                <div className="p-2 w-100 ">
+                  <a className="w-100 d-flex justify-content-start align-items-center pointer menu-user-nav" href="/blogisity-messenging" >
                   <AiOutlineMessage className="pointer" size={23} />
                   <div className="ps-2"> Messages </div>
                   <div className="ms-2 badge badge-pill bg-primary p-2">1</div>
+                  </a>
                 </div>
                 <div
                   className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav"

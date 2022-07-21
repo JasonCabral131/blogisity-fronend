@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import "suneditor/dist/css/suneditor.min.css";
 import './index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom/client';

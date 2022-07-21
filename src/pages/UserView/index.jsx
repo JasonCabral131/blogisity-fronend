@@ -15,6 +15,7 @@ import { BsChatDots, BsPersonPlus } from "react-icons/bs";
 import { BiUserX } from "react-icons/bi";
 import NoUserFound from "./../../assets/img/NoUserFound.png";
 import Published from "../UserInformation/Published";
+import {AiOutlineMail} from 'react-icons/ai';
 const UserView = () => {
   const { id } = useParams();
   const history = useHistory();
@@ -129,11 +130,14 @@ const UserView = () => {
                 <div className="writer-name text-wrap text-truncate">
                   {writer ? writer.name : ""}
                 </div>
+                <div className="writer-name text-wrap text-truncate">
+                  <div className="user-email-view"><AiOutlineMail size={17} /> <div className="ms-1">{writer.email}</div></div>
+                </div>
                 {user && user.onboarding === 1 ? (
                   <div className="writer-name text-wrap text-truncate d-flex mb-2">
-                    <button className="chat-btn-message">
+                    <a className="chat-btn-message pointer" href={"/blogisity-messenging/" + writer._id}>
                       <BsChatDots /> <div className="ms-1">Message</div>
-                    </button>
+                    </a>
 
                     <button
                       className={`follow-btn-message ms-1 ${

@@ -9,7 +9,7 @@ import { createBlog } from "../../redux/actions";
 import frontImg from "./../../assets/img/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png";
 import { getDataUrl } from "../../config/fetchingBlog";
 import SunEditor from "suneditor-react";
-import "suneditor/dist/css/suneditor.min.css";
+import {sortedFontOptions} from "./../../reusable"
 
 const initialState = {
   category: null,
@@ -17,16 +17,7 @@ const initialState = {
   file: { file: null, dataUrl: null },
   content: "",
 };
-const defaultFonts = [
-  "Arial",
-  "Comic Sans MS",
-  "Courier New",
-  "Impact",
-  "Georgia",
-  "Tahoma",
-  "Trebuchet MS",
-  "Verdana",
-];
+
 const CreateContent = () => {
   const imgRef = useRef();
   const dispatch = useDispatch();
@@ -92,16 +83,7 @@ const CreateContent = () => {
     if (res) setBlog(initialState);
     setLoading(false);
   };
-  const sortedFontOptions = [
-    "Logical",
-    "Salesforce Sans",
-    "Garamond",
-    "Sans-Serif",
-    "Serif",
-    "Times New Roman",
-    "Helvetica",
-    ...defaultFonts,
-  ].sort();
+
   return (
     <div className="container bg-white p-2 shadow mt-3">
       <form onSubmit={handleSubmit}>

@@ -165,7 +165,7 @@ const UserInformation = (props) => {
                 : ""
             }`}
             onClick={() => {
-              history.push(props.location.pathname + "/publish");
+              history.push( "/writer/publish");
             }}
           >
             Post

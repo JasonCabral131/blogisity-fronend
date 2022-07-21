@@ -154,6 +154,7 @@ function NavbarSearch() {
                       className="w-100 d-flex flex-column justify-content-start align-items-center mt-1"
                       key={Math.random()}
                       onClick={() => {
+                        setResult({})
                         history.push(`/view-content/${slugify(data.category)}/${data._id}`)
                       }}
                     >

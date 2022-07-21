@@ -13,13 +13,22 @@
 }
 .chat-btn-message{
     color: #fff;
+    text-decoration: none;
     background-color: var(--lighterblue);
     &:hover{
         background-color: #1A6ED8;
+        color: #fff;
     }
 }
 .follow-btn-message{
     &:hover{
         background-color: #dddee0;
     }
+}
+.user-email-view{
+    font-size: .9rem !important;
+    color: #ababac !important;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }

@@ -1,0 +1,74 @@
+.chat-content-container-information{
+    height: 100vh !important;
+    position: relative;
+    margin: 0; 
+    padding: 0;
+}
+.chat-main-heading-container{
+    width: 100%;
+    padding: 6px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 7vh;
+    border-bottom: 1px solid var(--lightergrey);
+    .unactive{
+        background-color: red;
+    }
+    input{
+        width: 100%;
+        margin-left: 10px;
+        outline: none;
+        border: none;
+        background-color: #F0F2F5;
+        padding: 8px 13px;
+        border-radius: 20px;
+    }
+}
+.messages-chats-container{
+    width: 100%;
+    padding: 6px;
+    height: 85.8vh;
+    border-bottom: 1px solid var(--lightergrey);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(191, 191, 191);
+        border-radius: 5px;
+      }
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+}
+.reciever-name{
+    margin-left: 5px;
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.circle-chat{
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin-left: 5px;
+}
+.emoji-chat-container{
+    position: relative;
+    .picker-container{
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+    }
+
+}
+.close-hide-chat{
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .close-hide-chat{
+        display: block;
+    }
+}

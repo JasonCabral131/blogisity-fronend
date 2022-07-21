@@ -116,7 +116,9 @@ const BlogBoxContent = ({ data, setTriggerUpdate }) => {
       </div>
       <div className="like-comment-content">
                   
-                  <div className="d-flex w-100 justify-content-start align-items-center p-2">
+                  <div className="d-flex w-100 justify-content-start align-items-center p-2" onClick={() => {
+                         history.push(`/view-content/${slugify(data.category.category)}/${data.category._id}`)
+                  }}>
                      <AiOutlineComment size={25} className="pointer" color="#306BEC"/>
                      <div className="ms-1 btn-hover-social-like">{data.comments.length} Comment</div>
                   </div>

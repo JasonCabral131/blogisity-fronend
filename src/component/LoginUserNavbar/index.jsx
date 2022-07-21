@@ -25,7 +25,7 @@ const LoginUserNavbar = () => {
 
       <Dropdown
         onPoint={<AiOutlineMessage className="pointer" size={23} />}
-        headingView={{msg: "View All Messages", url: ""}}
+        headingView={{msg: "View All Messages", url: "/blogisity-messenging"}}
       >
          <h6 className="text-center mt-2 text-center">No Message Found !!</h6>
       </Dropdown>

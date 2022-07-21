@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { disconnectSocketConnect, socketConnection, verifyUser } from "./redux/actions";
 import { api } from "./config/api";
 import io from "socket.io-client";
+import Messenger from "./pages/Messenger";
 const  App = () => {
    const {user, token} = useSelector(state => state.auth);
   const dispatch = useDispatch();
@@ -64,7 +65,13 @@ const  App = () => {
             return   <Redirect to="/home"/>
       }}
        />
-  
+  <Route path={"/blogisity-messenging"}  render={route => {
+            if(user && user.onboarding === 1){
+              return <Messenger {...route}/>
+            }
+            return   <Redirect to="/home"/>
+      }}
+       />
        <Route path={'/404'} render={route => {
         return <Page404 {...route}/>
       }}/>

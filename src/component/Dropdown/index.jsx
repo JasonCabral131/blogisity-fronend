@@ -12,7 +12,7 @@ const Dropdown = ({onPoint, headingView,children}) => {
           {children}
           </div>
           {
-            headingView ? <div className='view-all-content w-100 pointer' >{headingView.msg}</div>: null
+            headingView ? <a href={headingView.url} className='view-all-content w-100 pointer' >{headingView.msg}</a>: null
           }
           
         </div>: null
