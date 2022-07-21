@@ -45,8 +45,9 @@ const Navbar = ({ categories, ...props }) => {
           <div className="sign-up-sign-in-container">
             {user ? <LoginUserNavbar /> : <RegisterSignUp />}
           </div>
+          {user ? (
           <div className="pointer user-navbar-mobile">
-            {user ? (
+          
               <Dropdown
                 onPoint={
                   user ? (
@@ -88,8 +89,9 @@ const Navbar = ({ categories, ...props }) => {
                   <div className="ps-2">Logout </div>
                 </div>
               </Dropdown>
-            ) : null}
+           
           </div>
+           ) : null}
 
           <AiOutlineMenu
             size={35}
