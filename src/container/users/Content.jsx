@@ -47,7 +47,7 @@ const Content = ({ categories }) => {
             
             render={(route) => {
               if (user) {
-                if (user.onboarding === 1)
+                if (user?.onboarding === 1)
                   return <UserInformation {...route} />;
                 return <VerificationEmail {...route} />;
               } else {

@@ -49,7 +49,7 @@ const  App = () => {
     <Switch>
     <Route path={'/admin'}  render={route => {
       if(user){
-          if(user.status === 2){
+          if(user?.status === 2){
             return <AdminContainer {...route}/>
           }
        return   <Redirect to="/home"/>
@@ -66,7 +66,7 @@ const  App = () => {
       }}
        />
   <Route path={"/blogisity-messenging"}  render={route => {
-            if(user && user.onboarding === 1){
+            if(user && user?.onboarding === 1){
               return <Messenger {...route}/>
             }
             return   <Redirect to="/home"/>

@@ -67,8 +67,8 @@ const UserInformation = (props) => {
             className="writer-cover-profile"
             src={
               loadingBNG ? LoadingBngImg :  user
-                ? user.background?.url
-                  ? user.background?.url
+                ? user?.background?.url
+                  ? user?.background?.url
                   : PlainGrey
                 : PlainGrey
             }
@@ -94,16 +94,16 @@ const UserInformation = (props) => {
                   alt="profile user"
                   className="writer-profile"
                 /> : user ? (
-              user.profile.url ? (
+              user?.profile?.url ? (
                 <img
-                  src={user.profile.url}
+                  src={user?.profile?.url}
                   alt="profile user"
                   className="writer-profile"
                 />
               ) : (
                 <div className="writer-profile">
                   {" "}
-                  <Avatar name={user.name} size={145} round={true} />{" "}
+                  <Avatar name={user?.name} size={145} round={true} />{" "}
                 </div>
               )
             ) : null}
@@ -129,7 +129,7 @@ const UserInformation = (props) => {
         <div className="writer-information p-2 ">
           <div className="writer-content-info ">
             <div className="writer-name text-wrap text-truncate">
-              {user ? user.name : ""}
+              {user ? user?.name : ""}
             </div>
             <div className="post-follower-followring-container">
               <Post />

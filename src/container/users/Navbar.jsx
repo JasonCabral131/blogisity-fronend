@@ -51,10 +51,10 @@ const Navbar = ({ categories, ...props }) => {
               <Dropdown
                 onPoint={
                   user ? (
-                    user.profile.url ? (
-                      <Avatar src={user.profile.url} size={35} round={true} />
+                    user?.profile?.url ? (
+                      <Avatar src={user?.profile?.url} size={35} round={true} />
                     ) : (
-                      <Avatar name={user.name} size={35} round={true} />
+                      <Avatar name={user?.name} size={35} round={true} />
                     )
                   ) : null
                 }

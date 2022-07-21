@@ -33,10 +33,10 @@ const LoginUserNavbar = () => {
         <div className="pointer" onClick={() => {
           history.push("/writer")
         }}> 
-          {user.profile.url ? (
-            <Avatar src={user.profile.url} size={35} round={true} />
+          {user?.profile?.url ? (
+            <Avatar src={user?.profile?.url} size={35} round={true} />
           ) : (
-            <Avatar name={user.name} size={35} round={true} />
+            <Avatar name={user?.name} size={35} round={true} />
           )}
         </div>
       ) : null}
