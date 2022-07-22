@@ -1,0 +1,6 @@
+
+
+export const blogConstant = {
+    GET_LATEST_BLOG_SUCCESS: "GET_LATEST_BLOG_SUCCESS",
+    GET_LATEST_BLOG_FAIL: "GET_LATEST_BLOG_FAIL"
+}

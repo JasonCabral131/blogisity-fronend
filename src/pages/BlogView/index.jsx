@@ -125,7 +125,7 @@ const BlogView = () => {
   return (
     <div className="w-100 blog-view-container ">
       {loadingMain ? <LoadingBlogMain /> : null}
-      {blogContext ? (
+      {!loadingMain && blogContext ? (
         <div className="row">
           <div className="col-md-8">
             <div className="w-100 d-flex flex-column justify-content-start align-items-start mt-5">

@@ -24,13 +24,13 @@ const LatestPost = ({ blog , loadingLatest,proping , ...props}) => {
   return (
     <div className="latest-container mt-1">
       {
-        !loadingLatest ? <div className="btn-latest latest-btn-left pointer">
+       blog.length > 0? <div className="btn-latest latest-btn-left pointer">
         <AiOutlineArrowLeft onClick={prevSlide} size={25} />
       </div>: null
       }
       
 
-      {loadingLatest ? <div className="latest-container-content fade-in">
+      {loadingLatest &&  blog.length < 1? <div className="latest-container-content fade-in">
           <Skeleton height={400}/>
       </div> :blog.map((data, index) => {
         if (index === current) {
@@ -73,7 +73,7 @@ const LatestPost = ({ blog , loadingLatest,proping , ...props}) => {
       })}
    
       {
-        !loadingLatest ?  <div className="btn-latest latest-btn-right pointer">
+       blog.length > 0?  <div className="btn-latest latest-btn-right pointer">
         <AiOutlineArrowRight onClick={nextSlide} size={25} />
       </div>: null
       }

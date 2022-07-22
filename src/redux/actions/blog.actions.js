@@ -1,5 +1,6 @@
 import axiosInstance from "../../config/axios";
 import { toast } from 'react-toastify';
+import { blogConstant } from "../constants";
 export const createBlog = (data) => {
     return async(dispatch) => {
         try{
@@ -61,6 +62,21 @@ export const deleteBlog = (id) => {
             position: toast.POSITION.TOP_RIGHT
           });
         return false
+    }
+  }
+}
+
+export const getLatestBlog = () => {
+  return async(dispatch) => {
+    try{
+      const res = await axiosInstance.get("/blog/latest");
+      if(res.status === 200){
+        dispatch({type: blogConstant.GET_LATEST_BLOG_SUCCESS, payload: {latestBlog:res.data.blog}})
+        return true;
+      }
+      return false;
+    }catch(e){
+      return false;
     }
   }
 }
