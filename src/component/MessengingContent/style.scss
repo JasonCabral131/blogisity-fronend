@@ -67,6 +67,11 @@
 .close-hide-chat{
     display: none;
 }
+.btn-send-message{
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
 @media screen and (max-width: 600px) {
     .close-hide-chat{
         display: block;

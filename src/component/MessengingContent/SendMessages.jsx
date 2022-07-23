@@ -12,7 +12,7 @@ const SendMessages = ({ message, setMessage, handleSendMessage }) => {
     });
   };
   return (
-    <div className="chat-main-heading-container">
+    <form className="chat-main-heading-container" onSubmit={handleSendMessage}>
       <MdOutlineAddPhotoAlternate
         size={25}
         className="pointer"
@@ -31,7 +31,7 @@ const SendMessages = ({ message, setMessage, handleSendMessage }) => {
           }}
         />
       </div>
-
+        
       <input
         placeholder="Aa"
         value={message}
@@ -40,9 +40,11 @@ const SendMessages = ({ message, setMessage, handleSendMessage }) => {
         }}
       />
       {message.length > 1 ? (
-        <AiOutlineSend size={25} className="pointer" color="#0084FF" onClick={handleSendMessage} />
+        <button type="submit" className="btn-send-message">
+        <AiOutlineSend size={25} className="pointer" color="#0084FF" />
+        </button>
       ) : null}
-    </div>
+    </form>
   );
 };
 

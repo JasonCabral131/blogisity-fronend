@@ -3,10 +3,12 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Avatar from "react-avatar";
 import {BsArrowLeft} from "react-icons/bs";
-const RecieverHeading = ({reciever, activeUser}) => {
+const RecieverHeading = ({reciever, activeUser, hide, setHide}) => {
   return (
     <div className="chat-main-heading-container">
-                <div className="close-hide-chat">
+                <div className="close-hide-chat" onClick={() => {
+                  setHide(!hide)
+                }}>
                   <BsArrowLeft size={25} className="mx-1"/>
                 </div>
                 {reciever.profile.url ? (

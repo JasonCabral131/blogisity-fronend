@@ -7,8 +7,10 @@ import "./style.scss";
 import RecieverHeading from "./RecieverHeading";
 import MessagesContainer from "./Messages";
 import SendMessages from "./SendMessages";
-const MessengingContent = ({ setHide }) => {
+import {useSelector} from "react-redux";
+const MessengingContent = ({ setHide, hide }) => {
   const { id } = useParams();
+  const {user} = useSelector();
   const [loading, setLoading] = useState(false);
   const [reciever, setReciever] = useState(false);
   const [messenges, setMessenges] = useState([]);
@@ -31,8 +33,17 @@ const MessengingContent = ({ setHide }) => {
   useEffect(() => {
     handleGetUserChat();
   }, [id]);
-  const handleSendMessage = async() => {
-
+  const handleSendMessage = async(e) => {
+    e.preventDefault();
+    try{
+      setMessage(prev => {
+        return [{...prev}, {
+          sender: user?._id
+        }]
+      })
+    }catch(e){
+      return
+    }
   }
   return (
     <div className="w-100 ">
@@ -49,9 +60,9 @@ const MessengingContent = ({ setHide }) => {
         <div className="w-100">
           <div className="row messenger-row ">
             <div className="col-md-8 border chat-content-container-information">
-              <RecieverHeading reciever={reciever} activeUser={activeUser} setActiveUser={setActiveUser}/>
+              <RecieverHeading reciever={reciever} setHide={setHide} hide={hide} activeUser={activeUser} setActiveUser={setActiveUser}/>
               <MessagesContainer messenges={messenges} setMessenges={setMessenges}/>
-              <SendMessages message={message} setMessage={setMessage} handleSendMessage/>
+              <SendMessages message={message} setMessage={setMessage} handleSendMessage={handleSendMessage}/>
             </div>
             <div className="col-md-4 border chat-content-container-information mobile-hide-chat">
              

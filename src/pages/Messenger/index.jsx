@@ -82,9 +82,9 @@ const Messenger = () => {
                 <HiOutlineUsers size={20} /> <div className="ms-1">Writers</div>
               </div>
             </div>
-            {tablist.messenges && <Messenging />}
-            {tablist.followed && <Followed />}
-            {tablist.writer && <Writer />}
+            {tablist.messenges && <Messenging  setHide={setHide} hide={hide} size={size}/>}
+            {tablist.followed && <Followed setHide={setHide} hide={hide} size={size}/>}
+            {tablist.writer && <Writer setHide={setHide} hide={hide}  size={size} />}
           </div>
         </div>
         <div className="col-md-9 m-0 p-0  content-chat-info-container" style={{display: size.width < 600 ? hide ? "none" : "block" : "block"}}>
@@ -102,7 +102,7 @@ const Messenger = () => {
                 path={"/blogisity-messenging/:id"}
                 name="To Chat With"
                 render={() => {
-                  return <MessengingContent setHide={setHide}/>;
+                  return <MessengingContent setHide={setHide} hide={hide}/>;
                 }}
               />
               <Redirect to="/blogisity-messenging" />

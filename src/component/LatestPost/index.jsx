@@ -6,10 +6,12 @@ import moment from 'moment';
 import slugify from "slugify";
 import { useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { useEffect } from "react";
 const LatestPost = ({ blog , loadingLatest,proping , ...props}) => {
   const [current, setCurrent] = useState(0);
   const length = blog.length;
   const history = useHistory()
+
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
@@ -21,6 +23,7 @@ const LatestPost = ({ blog , loadingLatest,proping , ...props}) => {
     div.innerHTML = data.content;
     return div.innerText;
   };
+
   return (
     <div className="latest-container mt-1">
       {
