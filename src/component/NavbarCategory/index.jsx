@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 import slugify from 'slugify';
