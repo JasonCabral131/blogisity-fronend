@@ -31,6 +31,7 @@
     height: 85.8vh;
     border-bottom: 1px solid var(--lightergrey);
     overflow-y: scroll;
+    position: relative;
     &::-webkit-scrollbar {
         width: 5px;
       }
@@ -42,7 +43,65 @@
       &::-webkit-scrollbar-thumb:hover {
         background: #555;
       }
+      .message-chat-info{
+        margin-left: 5px;
+        position: relative;
+        margin-top: 10px;
+    
+      }
+      .message-info{
+        background-color: var(--lighterblue);
+        padding: 10px;
+        color: #fff;
+        border-radius: 4px;
+      }
+      .right-container{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+      .left-container{
+        display: flex;
+        align-self: flex-start;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .avatar-chat-right{
+        width: 35px;
+        position: relative;
+        .avatar-right-chat{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .avatar-left-chat{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+      }
+
 }
+.circle-sending-indicator{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 1px solid rgb(247, 96, 96);
+}
+.circle-send-indicator{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color:  var(--lighterblue);
+}
+.date-chat-send{
+    font-size: .7rem;
+    color: #b6b6b7;
+}
+
 .reciever-name{
     margin-left: 5px;
     text-transform: capitalize;

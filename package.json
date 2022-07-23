@@ -33,6 +33,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "sass": "^1.53.0",
+    "shortid": "^2.2.16",
     "slugify": "^1.6.5",
     "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",

@@ -8,13 +8,15 @@ import RecieverHeading from "./RecieverHeading";
 import MessagesContainer from "./Messages";
 import SendMessages from "./SendMessages";
 import {useSelector} from "react-redux";
+import shortid from "shortid";
 const MessengingContent = ({ setHide, hide }) => {
   const { id } = useParams();
-  const {user} = useSelector();
+  const {user} = useSelector(state => state.auth);
   const [loading, setLoading] = useState(false);
-  const [reciever, setReciever] = useState(false);
+  const [reciever, setReciever] = useState(null);
   const [messenges, setMessenges] = useState([]);
   const [message, setMessage] = useState("");
+  const [photos, setPhotos] = useState([]);
   const [activeUser, setActiveUser] = useState(false);
   const handleGetUserChat = async () => {
     try {
@@ -36,11 +38,42 @@ const MessengingContent = ({ setHide, hide }) => {
   const handleSendMessage = async(e) => {
     e.preventDefault();
     try{
-      setMessage(prev => {
-        return [{...prev}, {
-          sender: user?._id
-        }]
-      })
+      if(message.trim().length > 0 || photos.length > 0){
+        const genId = shortid.generate();
+        setMessenges(prev => {
+          return [...prev, {
+            sender: user?._id,
+            messenges: message,
+            photos: [],
+            reciever: id,
+            loading: true,
+            genId,
+          }]
+        })
+        
+        const form = new FormData();
+        form.append("messenges", message);
+        form.append("reciever", id);
+        for(let photo of photos){
+          form.append("files", photo.file);
+        }
+        setMessage("");
+        const res = await axiosInstance.put("/messenges/send-messenges", form);
+        if(res.status === 200){
+          setMessenges(prev => {
+            return prev.map(data => {
+              if(data.genId){
+                  if(data.genId === genId){
+                    return {...data, loading: false}
+                  }
+              }
+              return data;
+            })
+          })
+        }
+       
+      }
+      
     }catch(e){
       return
     }
@@ -61,7 +94,7 @@ const MessengingContent = ({ setHide, hide }) => {
           <div className="row messenger-row ">
             <div className="col-md-8 border chat-content-container-information">
               <RecieverHeading reciever={reciever} setHide={setHide} hide={hide} activeUser={activeUser} setActiveUser={setActiveUser}/>
-              <MessagesContainer messenges={messenges} setMessenges={setMessenges}/>
+              <MessagesContainer messenges={messenges} setMessenges={setMessenges} reciever={reciever} />
               <SendMessages message={message} setMessage={setMessage} handleSendMessage={handleSendMessage}/>
             </div>
             <div className="col-md-4 border chat-content-container-information mobile-hide-chat">
