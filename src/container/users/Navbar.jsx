@@ -100,6 +100,18 @@ const Navbar = ({ categories, ...props }) => {
               setMobile(!mobile);
             }}
           />
+          {
+            !user ? <div className="pointer user-navbar-mobile">
+            <div
+                 className="p-2 w-100 d-flex justify-content-start align-items-center pointer menu-user-nav"
+                 onClick={() => {
+                   history.push("/login");
+                 }}
+               >
+                 <AiOutlineLogout className="pointer" size={23} />
+               </div>
+           </div> : null
+          }
         </div>
       </div>
       <div className="navbar-category">
