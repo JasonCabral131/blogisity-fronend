@@ -87,6 +87,18 @@
     font-size: 1rem;
     font-weight: 800;
 }
+.inbox-sender{
+    font-size: .9rem;
+    font-weight: 800;
+}
+.message-inbox{
+    color: rgb(149, 149, 149);
+}
+.inbox-container-point{
+    &:hover{
+        background-color: #cacacc;
+    }
+}
 @media screen and (max-width: 600px) {
     .content-chat-info-container{
         position: absolute;

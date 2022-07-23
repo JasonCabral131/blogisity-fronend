@@ -49,6 +49,8 @@ const Followed = ({setHide, size, hide}) => {
           </div>
         );
       })}
+
+      {!loading && blog.length < 1 ? <div className="w-100 text-center text-wrap mt-4 p-1" >Followed Some Writer For Latest Post and Update</div> : null }
       {loading && <div className="w-100 text-center mt-1">loading...</div>}
     </div>
   );

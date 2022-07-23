@@ -11,6 +11,8 @@ import Followed from "./Followed";
 import Writer from "./Writer";
 
 import { useWindowSize } from "../../reusable/common";
+import axiosInstance from "../../config/axios";
+import { useEffect } from "react";
 const Messenger = () => {
   const history = useHistory();
   const [hide, setHide] = useState(true);
@@ -19,8 +21,24 @@ const Messenger = () => {
     followed: false,
     writer: false,
   });
+  const [loading, setloading] = useState(false);
+  const [inboxes, setInboxes] = useState([]);
   const size = useWindowSize();
-
+  const handleGetInboxMessages = async() => {
+      try{
+        setloading(true)
+        const res = await axiosInstance.get("/messenges/messenges/inbox");
+        setloading(false)
+        if(res.status === 200){
+          setInboxes(res.data.room)
+        }
+      }catch(e){
+        setloading(false)
+      }
+  }
+  useEffect(() => {
+    handleGetInboxMessages();
+  }, [])
   return (
     <div className="messenger-containerx w-100">
       <div className="row messenger-row">
@@ -48,6 +66,7 @@ const Messenger = () => {
                     followed: false,
                     writer: false,
                   });
+                  handleGetInboxMessages();
                 }}
               >
                 <AiOutlineMessage size={20} />{" "}
@@ -82,7 +101,7 @@ const Messenger = () => {
                 <HiOutlineUsers size={20} /> <div className="ms-1">Writers</div>
               </div>
             </div>
-            {tablist.messenges && <Messenging  setHide={setHide} hide={hide} size={size}/>}
+            {tablist.messenges && <Messenging  setHide={setHide} hide={hide} size={size} inboxes={inboxes} loading={loading}/>}
             {tablist.followed && <Followed setHide={setHide} hide={hide} size={size}/>}
             {tablist.writer && <Writer setHide={setHide} hide={hide}  size={size} />}
           </div>
