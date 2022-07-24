@@ -19,7 +19,7 @@ const  App = () => {
    }
    useEffect(() => {
     if(user && token){
-      const newSocket = io(api.socketApiLocal, {
+      const newSocket = io(api.socketApi, {
         query: {
           token,
         },
