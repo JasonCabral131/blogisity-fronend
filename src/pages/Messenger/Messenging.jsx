@@ -8,7 +8,7 @@ const Messenging = ({ inboxes , hide, setHide}) => {
     <div
    
     className="d-flex text-wrap text-truncate justify-content-start align-items-start flex-column mt-1 messagae-inbox-content">
-      {inboxes.map((data) => {
+      {inboxes.map((data, index) => {
         return (
           <div
           onClick={() => {
@@ -19,7 +19,7 @@ const Messenging = ({ inboxes , hide, setHide}) => {
             history.push(`/blogisity-messenging/${data.key}`)
           }} 
             className="w-100 d-flex justify-content-start align-items-center ps-1 border-bottom pointer inbox-container-point"
-            key={Math.random().toString()}
+            key={index}
           >
             {data.profile ? (
               <Avatar src={data.profile} round size={30} />

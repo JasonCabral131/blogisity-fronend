@@ -133,12 +133,18 @@
 }
 .photo-upload-container{
     position: absolute;
-    bottom: 0;
+    bottom: 7vh;
     width: 100%;
     left: 0;
-    height: 120px;
+    height: 130px;
     overflow-x: scroll;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     
+    & > * {
+      margin: 0 2px;
+    }
     &::-webkit-scrollbar {
         width: 5px;
       }
@@ -150,6 +156,29 @@
       &::-webkit-scrollbar-thumb:hover {
         background: #555;
       }
+}
+.photo-container-uploads{
+  position: relative;
+  width: 100px;
+  height: 110px;
+  img{
+    width: 100px;
+    height: 110px;
+   
+  }
+  .close-uploadImg-con{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
 }
 @media screen and (max-width: 600px) {
     .close-hide-chat{

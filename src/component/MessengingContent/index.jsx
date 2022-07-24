@@ -42,28 +42,50 @@ const MessengingContent = ({ setHide, hide }) => {
   }, [id]);
   const handleSendMessage = async(e) => {
     e.preventDefault();
+
     try{
-      if(message.trim().length > 0 || photos.length > 0){
+      if(message.length > 0  || photos.length > 0){
+     
         const genId = shortid.generate();
-        setMessenges(prev => {
-          return [...prev, {
-            sender: user?._id,
-            messenges: message,
-            photos: [],
-            reciever: id,
-            loading: true,
-            genId,
-            _id: genId
-          }]
-        })
-        
+        if(message.length > 0 ){
+          if(message.trim().length > 0){
+            setMessenges(prev => {
+              return [...prev, {
+                sender: user?._id,
+                messenges: message,
+                photos: [],
+                reciever: id,
+                loading: true,
+                genId,
+                _id: genId
+              }]
+            }) 
+          }
+        }
+      
+        if(photos.length > 0){
+          setMessenges(prev => {
+            return [...prev, {
+              sender: user?._id,
+              messenges: null,
+              photos:photos.map(photo => {
+                return {url: photo.dataUrl}
+              }),
+              reciever: id,
+              loading: true,
+              genId,
+              _id: genId
+            }]
+          }) 
+        }
         const form = new FormData();
-        form.append("messenges", message);
+        form.append("messenges", message.length > 0 ? message.trim().length > 0 ?  message: null : null );
         form.append("reciever", id);
         for(let photo of photos){
           form.append("files", photo.file);
         }
         setMessage("");
+        setPhotos([])
         const res = await axiosInstance.put("/messenges/send-messenges", form);
         if(res.status === 200){
           setMessenges(prev => {
@@ -76,6 +98,7 @@ const MessengingContent = ({ setHide, hide }) => {
               return data;
             })
           })
+          
           if(socket){
             socket.emit("sending-chat-message", { ...res.data.messenge }, (data) => {})
           }
@@ -84,6 +107,7 @@ const MessengingContent = ({ setHide, hide }) => {
       }
       
     }catch(e){
+      console.log(e)
       return
     }
   }

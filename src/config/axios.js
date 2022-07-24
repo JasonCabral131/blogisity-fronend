@@ -4,7 +4,7 @@ import { api } from "./api";
 const token = Store.getState().auth.token;
 
 const axiosInstance = axios.create({
-  baseURL: api.production,
+  baseURL: api.localApi,
   headers: { authorization: token ? `Bearer ${token}` : "" },
 });
 axiosInstance.interceptors.request.use((req) => {
