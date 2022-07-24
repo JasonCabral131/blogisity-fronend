@@ -29,8 +29,8 @@ const Messenging = ({ inboxes , hide, setHide}) => {
             <div className="inbox-sender-container ms-2">
               <div className="inbox-sender">{data.sender}</div>
               <div className="w-100">
-                {data.chats ? (
-                  data.chats.message ? (
+                {data.chats ? ( 
+                  data.chats.message &&  data.chats.message !== "null" ? (
                     <div className="message-inbox">{data.chats.message}</div>
                   ) : (
                     <div className="message-inbox">
