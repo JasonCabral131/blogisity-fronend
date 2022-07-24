@@ -28,7 +28,7 @@ const  App = () => {
         dispatch(disconnectSocketConnect());
       });
       newSocket.on("connect", () => {
-        
+        newSocket.emit("AddToActive", { user }, (data) => {});
         dispatch(socketConnection(newSocket));
       });
     }

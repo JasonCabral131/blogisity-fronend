@@ -21,7 +21,7 @@ const Writer = ({setHide, size, hide}) => {
     </div>
    }
   return (
-    <div className='w-100 d-flex justify-content-start align-items-start flex-column'>
+    <div className='w-100 d-flex justify-content-start align-items-start flex-column messagae-inbox-content'>
         {
           blog.map((writer, index) => {
             if(index === blog.length){

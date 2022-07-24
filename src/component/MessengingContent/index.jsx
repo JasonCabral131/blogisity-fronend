@@ -9,14 +9,18 @@ import MessagesContainer from "./Messages";
 import SendMessages from "./SendMessages";
 import {useSelector} from "react-redux";
 import shortid from "shortid";
+import useSound from 'use-sound';
+import newMssgMP3 from "./../../assets/ringtune/messenger.mp3"
 const MessengingContent = ({ setHide, hide }) => {
   const { id } = useParams();
+  const [play] = useSound(newMssgMP3);
   const {user} = useSelector(state => state.auth);
   const [loading, setLoading] = useState(false);
   const [reciever, setReciever] = useState(null);
   const [messenges, setMessenges] = useState([]);
   const [message, setMessage] = useState("");
   const [photos, setPhotos] = useState([]);
+  const {socket} = useSelector(state => state.socket);
   const [activeUser, setActiveUser] = useState(false);
   const handleGetUserChat = async () => {
     try {
@@ -34,6 +38,7 @@ const MessengingContent = ({ setHide, hide }) => {
   };
   useEffect(() => {
     handleGetUserChat();
+    setMessage([]);
   }, [id]);
   const handleSendMessage = async(e) => {
     e.preventDefault();
@@ -48,6 +53,7 @@ const MessengingContent = ({ setHide, hide }) => {
             reciever: id,
             loading: true,
             genId,
+            _id: genId
           }]
         })
         
@@ -70,6 +76,9 @@ const MessengingContent = ({ setHide, hide }) => {
               return data;
             })
           })
+          if(socket){
+            socket.emit("sending-chat-message", { ...res.data.messenge }, (data) => {})
+          }
         }
        
       }
@@ -78,6 +87,20 @@ const MessengingContent = ({ setHide, hide }) => {
       return
     }
   }
+  useEffect(() => {
+    if(socket){
+      socket.on("new-chat-message",  (data) => {
+        setMessenges(prev => {
+          return [...prev, {
+            ...data.data
+          }]
+        })
+        play();
+      })
+      
+    }
+  }, [socket]);
+ 
   return (
     <div className="w-100 ">
       {loading ? (
@@ -94,8 +117,8 @@ const MessengingContent = ({ setHide, hide }) => {
           <div className="row messenger-row ">
             <div className="col-md-8 border chat-content-container-information">
               <RecieverHeading reciever={reciever} setHide={setHide} hide={hide} activeUser={activeUser} setActiveUser={setActiveUser}/>
-              <MessagesContainer messenges={messenges} setMessenges={setMessenges} reciever={reciever} />
-              <SendMessages message={message} setMessage={setMessage} handleSendMessage={handleSendMessage}/>
+              <MessagesContainer messenges={messenges} setMessenges={setMessenges} reciever={reciever} photos={photos} setPhotos={setPhotos} />
+              <SendMessages message={message} setMessage={setMessage} handleSendMessage={handleSendMessage} photos={photos} setPhotos={setPhotos}/>
             </div>
             <div className="col-md-4 border chat-content-container-information mobile-hide-chat">
              

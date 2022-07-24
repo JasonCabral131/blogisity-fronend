@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 
 import { BsEmojiSmile } from "react-icons/bs";
 import Picker from "emoji-picker-react";
@@ -6,6 +6,8 @@ import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { AiOutlineSend } from "react-icons/ai";
 const SendMessages = ({ message, setMessage, handleSendMessage }) => {
   const [emoji, setEmoji] = useState(false);
+  const inputRef = useRef();
+
   const onEmojiClick = (event, emojiObject) => {
     setMessage((prev) => {
       return (prev += emojiObject.emoji);
@@ -33,12 +35,22 @@ const SendMessages = ({ message, setMessage, handleSendMessage }) => {
       </div>
         
       <input
+      
         placeholder="Aa"
         value={message}
         onChange={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
           setMessage(e.target.value);
         }}
       />
+      <input
+        type={"file"}
+        accept
+      placeholder="Aa"
+    
+      style={{display:'none'}}
+    />
       {message.length > 1 ? (
         <button type="submit" className="btn-send-message">
         <AiOutlineSend size={25} className="pointer" color="#0084FF" />

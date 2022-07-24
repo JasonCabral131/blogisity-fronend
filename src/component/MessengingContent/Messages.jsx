@@ -1,10 +1,10 @@
 import React, {useRef} from "react";
 import Avatar from "react-avatar";
 import { useSelector } from "react-redux";
-
+import Linkify from 'react-linkify';
 import moment from "moment";
 import { useEffect } from "react";
-const MessagesContainer = ({ messenges, setMessenges, reciever }) => {
+const MessagesContainer = ({ messenges, setMessenges, reciever, photos, setPhotos }) => {
   const { user } = useSelector((state) => state.auth);
   const chatContainer = useRef();
   const handlescrollBottom = () => {
@@ -23,9 +23,9 @@ const MessagesContainer = ({ messenges, setMessenges, reciever }) => {
         }
         if (data.sender === user?._id) {
           return (
-            <div className="message-chat-info right-container">
+            <div className="message-chat-info right-container" key={data._id}>
               <div className="d-flex">
-                <div className="message-info">{data.messenges} </div>
+                <div className="message-info"><Linkify>{data.messenges} </Linkify></div>
                 <div className="avatar-chat-right">
                   <div className="avatar-right-chat">
                     {user?.profile?.url ? (
@@ -48,7 +48,7 @@ const MessagesContainer = ({ messenges, setMessenges, reciever }) => {
           );
         }
         return (
-          <div className="message-chat-info left-container ">
+          <div className="message-chat-info left-container " key={data._id}>
             <div className="d-flex">
               <div className="avatar-chat-right">
                 <div className="avatar-left-chat">
@@ -69,6 +69,12 @@ const MessagesContainer = ({ messenges, setMessenges, reciever }) => {
           </div>
         );
       })}
+      {
+        photos.length > 0 ? <div className="photo-upload-container">
+
+        </div> : null
+      }
+      
     </div>
   );
 };

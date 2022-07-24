@@ -3,6 +3,7 @@
     padding: 0 !important;
     height: 99.6vh;
     width: 100%;
+    position: relative;
 }
 .messenger-container{
     width: 100% !important;
@@ -98,6 +99,22 @@
     &:hover{
         background-color: #cacacc;
     }
+}
+.messagae-inbox-content{
+    height: 79vh;
+    position: relative;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(191, 191, 191);
+        border-radius: 5px;
+      }
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
 }
 @media screen and (max-width: 600px) {
     .content-chat-info-container{

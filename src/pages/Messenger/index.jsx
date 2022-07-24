@@ -9,13 +9,17 @@ import { HiOutlineUsers } from "react-icons/hi";
 import Messenging from "./Messenging";
 import Followed from "./Followed";
 import Writer from "./Writer";
-
+import newMssgMP3 from "./../../assets/ringtune/messenger.mp3"
 import { useWindowSize } from "../../reusable/common";
 import axiosInstance from "../../config/axios";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import useSound from 'use-sound';
 const Messenger = () => {
   const history = useHistory();
   const [hide, setHide] = useState(true);
+  const [play] = useSound(newMssgMP3);
+  const {socket} = useSelector(state => state.socket);
   const [tablist, setTablist] = useState({
     messenges: true,
     followed: false,
@@ -39,6 +43,79 @@ const Messenger = () => {
   useEffect(() => {
     handleGetInboxMessages();
   }, [])
+  useEffect(() => {
+    if(socket){
+      socket.on("update-chat-message-inbox",  (data) => {
+        const message = data.data;
+        setInboxes(prev => {
+          let currentIndex = null;
+          let moverArray = prev.map((inbox, index) => {
+            if(inbox.key === message.reciever){
+              currentIndex = index;
+              return {...inbox, chats: {
+                byme: true,
+                date:message.createdAt,
+                message:message. messenges,
+                images: message.photos
+              }};
+            }
+            return inbox;
+          })
+          if(currentIndex){
+            moverArray =  immutableMove(moverArray, currentIndex, 0)
+          }
+          
+          return moverArray;
+        
+         })
+        
+      })
+      socket.on("new-chat-message",  (data) => {
+        const message = data.data;
+        play();
+         setInboxes(prev => {
+          let currentIndex = null;
+          let moverArray = prev.map((inbox, index) => {
+            if(inbox.key === message.sender){
+              currentIndex = index;
+              return {...inbox, chats: {
+                byme: true,
+                date:message.createdAt,
+                message:message. messenges,
+                images: message.photos
+              }};
+            }
+            return inbox;
+          })
+          if(currentIndex){
+            moverArray =  immutableMove(moverArray, currentIndex, 0)
+          }
+          return moverArray;
+         })
+       
+      })
+    }
+  }, [socket]);
+  function immutableMove(arr, from, to) {
+    return arr.reduce((prev, current, idx, self) => {
+      if (from === to) {
+        prev.push(current);
+      }
+      if (idx === from) {
+        return prev;
+      }
+      if (from < to) {
+        prev.push(current);
+      }
+      if (idx === to) {
+        prev.push(self[from]);
+      }
+      if (from > to) {
+        prev.push(current);
+      }
+      return prev;
+    }, []);
+  }
   return (
     <div className="messenger-containerx w-100">
       <div className="row messenger-row">

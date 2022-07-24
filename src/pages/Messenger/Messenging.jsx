@@ -7,12 +7,15 @@ const Messenging = ({ inboxes , hide, setHide}) => {
   return (
     <div
    
-    className="d-flex text-wrap text-truncate justify-content-start align-items-start flex-column mt-1 ">
+    className="d-flex text-wrap text-truncate justify-content-start align-items-start flex-column mt-1 messagae-inbox-content">
       {inboxes.map((data) => {
         return (
           <div
           onClick={() => {
-            setHide(!hide)
+            if(setHide){
+              setHide(!hide)
+            }
+           
             history.push(`/blogisity-messenging/${data.key}`)
           }} 
             className="w-100 d-flex justify-content-start align-items-center ps-1 border-bottom pointer inbox-container-point"

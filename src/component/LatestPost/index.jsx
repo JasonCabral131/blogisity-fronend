@@ -57,8 +57,8 @@ const LatestPost = ({ blog , loadingLatest,proping , ...props}) => {
                     ? innerText(data).substring(0, 200) + "..."
                     : innerText(data)}
                 </div>
-                <div className="d-flex justify-content-start align-items-center mt-3">
-                <div className="creator-latest  text-wrap text-truncate pointer">{data.creator.name}</div>
+                <div className="d-flex justify-content-start align-items-center mt-3 text-wrap">
+                    <div className="creator-latest  text-wrap text-truncate pointer">{data.creator.name}</div>
                     <div className="mx-2 ">in</div>
                     <div className="type-content-latest pointer" onClick={() => {
                         history.push(`/view-content/${slugify(data.category.category)}/${data.category._id}`)
