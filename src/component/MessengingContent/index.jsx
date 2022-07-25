@@ -24,11 +24,11 @@ const MessengingContent = ({ setHide, hide }) => {
   const [activeUser, setActiveUser] = useState(false);
   const handleGetUserChat = async () => {
     try {
+      setActiveUser(false);
       setLoading(true);
       const res = await axiosInstance.get(`/messenges/${id}`);
       setLoading(false);
       if (res.status === 200) {
-        console.log(res.data);
         setReciever(res.data.user);
         setMessenges(res.data.messenges);
       }
@@ -39,6 +39,11 @@ const MessengingContent = ({ setHide, hide }) => {
   useEffect(() => {
     handleGetUserChat();
     setMessage([]);
+    if(socket){
+      socket.emit("is-active", { _id:id  }, async(data) => {
+        setActiveUser(  data);
+      })
+    }
   }, [id]);
   const handleSendMessage = async(e) => {
     e.preventDefault();
@@ -121,7 +126,16 @@ const MessengingContent = ({ setHide, hide }) => {
         })
         play();
       })
-      
+      socket.on("connected-from-server",  (data) => {
+          if(data._id.toString() === id.toString()){
+            setActiveUser(true);
+          }
+      })
+      socket.on("disconnected-from-server",  (data) => {
+        if(data._id.toString() === id.toString()){
+          setActiveUser(false);
+        }
+    })
     }
   }, [socket]);
  

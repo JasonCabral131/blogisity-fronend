@@ -32,7 +32,7 @@ const RecieverHeading = ({reciever, activeUser, hide, setHide}) => {
                   {({ ref, ...triggerHandler }) => (
                     <div
                       ref={ref}
-                      className={`circle-chat unactive pointer shadow`}
+                      className={`circle-chat ${activeUser ? "activeUser": "unactive"} pointer shadow`}
                       {...triggerHandler}
                     />
                   )}
