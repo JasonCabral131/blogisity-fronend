@@ -128,7 +128,7 @@ const MessengingContent = ({ setHide, hide }) => {
   return (
     <div className="w-100 ">
       {loading ? (
-        <div className="mt-5 d-flex flex-column justify-content-center align-items-center">
+        <div className="mt-5 d-flex flex-column justify-content-center align-items-center loading-msg-container">
           <Audio height="200" width="200" color="#54A8F6" ariaLabel="loading" />
           <h3 style={{ color: "#54A8F6" }} className="mt-2">
             Loading Content
