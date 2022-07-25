@@ -47,12 +47,15 @@ const MessagesContainer = ({
                     </div>
                   ) : null}
                   {data.photos.length > 0 ? (
-                     <ReactPhotoGrid
+                    <div style={{width: "100%"}}>
+                    <ReactPhotoGrid
+                         containerWidth={"100%"}
+                    data={data.photos.map(pt => {
+                     return pt.url
+                    })}
                     
-                     data={data.photos.map(pt => {
-                      return pt.url
-                     })}
-                 />
+                />
+                </div>
                   ) : null}
                   <div className="avatar-chat-right">
                     <div className="avatar-right-chat">
@@ -81,7 +84,7 @@ const MessagesContainer = ({
             <div className="message-chat-info left-container " key={index}>
               <div className="d-flex">
                 <div className="avatar-chat-right">
-                  <div className="avatar-left-chat">
+                  <div className="avatar-right-chat">
                     {reciever?.profile?.url ? (
                       <Avatar round src={reciever?.profile?.url} size={30} />
                     ) : (
@@ -95,12 +98,15 @@ const MessagesContainer = ({
                   </div>
                 ) : null}
                 {data.photos.length > 0 ? (
+                  <div style={{width: "100%"}}>
                 <ReactPhotoGrid
-                    
+                containerWidth={"100%"}
                 data={data.photos.map(pt => {
                  return pt.url
                 })}
+                
             />
+            </div>
                 ) : null}
               </div>
               <div className="d-flex justify-content-start align-items-center">
