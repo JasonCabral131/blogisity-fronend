@@ -191,6 +191,15 @@
     justify-content: start;
     align-items: center;
     border-bottom: 1px solid var(--lightergrey);
+    input{
+      width: 100%;
+      margin-left: 10px;
+      outline: none;
+      border: none;
+      background-color: #F0F2F5;
+      padding: 8px 13px;
+      border-radius: 20px;
+  }
 }
 @media screen and (max-width: 600px) {
     .close-hide-chat{
