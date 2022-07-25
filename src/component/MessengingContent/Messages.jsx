@@ -49,7 +49,7 @@ const MessagesContainer = ({
                   {data.photos.length > 0 ? (
                     <div style={{width: "100%"}}>
                     <ReactPhotoGrid
-                         containerWidth={"100%"}
+                         containerWidth={"85%"}
                     data={data.photos.map(pt => {
                      return pt.url
                     })}
@@ -100,7 +100,7 @@ const MessagesContainer = ({
                 {data.photos.length > 0 ? (
                   <div style={{width: "100%"}}>
                 <ReactPhotoGrid
-                containerWidth={"100%"}
+                containerWidth={"85%"}
                 data={data.photos.map(pt => {
                  return pt.url
                 })}
