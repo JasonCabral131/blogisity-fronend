@@ -32,3 +32,9 @@
     justify-content: start;
     align-items: center;
 }
+
+@media screen and (max-width: 600px) {
+    .chat-btn-message, .follow-btn-message{
+        width: 150px;
+    }
+}
