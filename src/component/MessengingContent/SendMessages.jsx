@@ -26,7 +26,7 @@ const ImageUpload = async(e) => {
   }
 }
   return (
-    <form className="chat-main-heading-container send-container" onSubmit={handleSendMessage}>
+    <form className="send-container" onSubmit={handleSendMessage}>
       <MdOutlineAddPhotoAlternate
         size={25}
         className="pointer"
