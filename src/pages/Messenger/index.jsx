@@ -68,7 +68,10 @@ const Messenger = () => {
           return moverArray;
         
          })
-        
+        const exist = inboxes.some(d => d.key === message.reciever );
+        if(!exist){
+          handleGetInboxMessages();
+        }
       })
       socket.on("new-chat-message",  (data) => {
         const message = data.data;
@@ -92,7 +95,10 @@ const Messenger = () => {
           }
           return moverArray;
          })
-       
+         const exist = inboxes.some(d => d.key === message.sender );
+         if(!exist){
+           handleGetInboxMessages();
+         }
       })
     }
   }, [socket]);
